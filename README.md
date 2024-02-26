@@ -87,3 +87,5 @@
 **Fluxo Principal:**
 1. O administrador solicita o cadastro de um novo usuário.
 2. O sistema cadastra o usuário e confirma a operação para o administrador.
+
+### LINK: https://docs.google.com/document/d/1cRi4ArQFVnF4WfdasUitLyF4_fRpecvx2HA4txAp3kg/edit?usp=sharing
