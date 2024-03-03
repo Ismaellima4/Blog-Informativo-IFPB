@@ -22,5 +22,5 @@ Portanto, é o blog pensado para cumprir a missão de ser uma melhora no compart
 Esperança, e um portal de notícias com a finalidade de promover um aumento na disseminação dessas informações.
 
 
-# Casos de teste do sistema
+# Casos de teste do sistema (Atualizado)
 ### Link https://docs.google.com/document/d/1cRi4ArQFVnF4WfdasUitLyF4_fRpecvx2HA4txAp3kg/edit?usp=sharing
