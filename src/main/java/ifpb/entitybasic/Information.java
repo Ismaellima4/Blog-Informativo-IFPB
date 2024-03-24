@@ -4,7 +4,7 @@ import ifpb.entitybasic.exceptions.InvalidDescriptionInformationException;
 import ifpb.entitybasic.exceptions.InvalidTitleInformationException;
 import ifpb.entitybasic.exceptions.InvalidWhiteSpaceException;
 
-public class Information {
+public class Information implements IInformation {
     private String title;
     private String description;
 
@@ -33,6 +33,7 @@ public class Information {
         return description.matches("^.{30,255}");
     }
 
+    @Override
     public void changeTitle(String title) throws Exception {
         String titleTrim = title.trim();
         if (!validateTitle(titleTrim)){
@@ -40,7 +41,7 @@ public class Information {
         }
         this.title = titleTrim;
     }
-
+    @Override
     public void changeDescription(String description) throws Exception {
         String descriptionTrim = description.trim();
         if (!validateDescription(descriptionTrim)){
