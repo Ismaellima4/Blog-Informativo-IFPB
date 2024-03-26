@@ -1,5 +1,7 @@
 package ifpb;
 
+import ifpb.entitybasic.interfaces.Authors;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 

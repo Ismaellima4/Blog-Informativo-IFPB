@@ -1,7 +1,8 @@
 package ifpb.entitybasic.interfaces;
 
-public interface IKeyWord {
+import ifpb.entitybasic.KeyWord;
 
-    String formatWord(String word);
-
+public interface IKeyWord extends IBasicEntity<KeyWord> {
+    boolean compareTo( KeyWord compareData);
+    boolean isEmpty();
 }

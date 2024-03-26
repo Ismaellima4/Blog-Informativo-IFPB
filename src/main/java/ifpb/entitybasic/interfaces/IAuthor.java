@@ -1,6 +1,8 @@
 package ifpb.entitybasic.interfaces;
 
-public interface IAuthor {
-    String formatName(String name);
+import ifpb.entitybasic.Author;
 
+public interface IAuthor extends IBasicEntity<Author> {
+    boolean isEmpty();
+    boolean compareTo(Author compareData);
 }
