@@ -2,6 +2,8 @@ package ifpb.entitybasic;
 
 import ifpb.entitybasic.exceptions.InvalidChangePassword;
 import ifpb.entitybasic.exceptions.InvalidPasswordException;
+import ifpb.entitybasic.interfaces.IPassword;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
@@ -9,18 +11,18 @@ public class Password implements IPassword {
     private String password;
 
     public Password(String password) throws Exception {
-        if(validate(password)){
+        this.password = validate(password);
+    }
+
+    private String validate(String password) throws Exception {
+        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!?.,*/_])(?=\\S+$).{8,20}$";
+        if (!password.matches(regex)){
             throw new InvalidPasswordException();
         }
-        this.password = generateHash(password);
+        return generateHash(password);
     }
 
-    public static boolean validate(String password){
-        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!?.,*/_])(?=\\S+$).{8,20}$";
-        return !password.matches(regex);
-    }
-
-    public static String generateHash(String password) throws Exception {
+    private String generateHash(String password) throws Exception {
         MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
         byte[] hash = algorithm.digest(password.getBytes(StandardCharsets.UTF_8));
         StringBuilder hexString = new StringBuilder();
@@ -32,10 +34,10 @@ public class Password implements IPassword {
 
     @Override
     public void changePassword(String newPassword) throws Exception {
-        if (validate(newPassword) || compareHash(newPassword)){
+        if (compareHash(newPassword)){
             throw new InvalidPasswordException();
         }
-        this.password = generateHash(newPassword);
+        this.password = validate(newPassword);
     }
 
     private boolean compareHash(String newPassword) throws Exception {
