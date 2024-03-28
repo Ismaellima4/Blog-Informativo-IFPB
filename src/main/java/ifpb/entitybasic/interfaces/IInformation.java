@@ -1,4 +1,4 @@
-package ifpb.entitybasic;
+package ifpb.entitybasic.interfaces;
 
 public interface IInformation {
     void changeTitle(String title) throws Exception;
