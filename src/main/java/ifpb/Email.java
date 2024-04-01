@@ -1,4 +1,6 @@
 package ifpb;
 
-public interface Email {
+public interface Email{
+    Email getEmail();
+    void setEmail(String email);
 }
