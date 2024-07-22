@@ -48,7 +48,4 @@ public class Password implements IPassword {
         return false;
     }
 
-    public String getPassword() {
-        return password;
-    }
 }
