@@ -5,14 +5,15 @@ import ifpb.entitybasic.interfaces.IID;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class ID implements IID {
+public class ID<T> implements IID {
     private final String id;
 
-    public ID(Object... args) {
+    @SafeVarargs
+    public ID(T... args) {
         this.id = Arrays.stream(args).map(String::valueOf).collect(Collectors.joining("+","(",")"));
     }
 
-    public boolean compareTo( ID compareId) {
+    public boolean compareTo(ID compareId) {
         return this.id.equals(compareId.id);
     }
 }

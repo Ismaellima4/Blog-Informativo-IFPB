@@ -8,10 +8,11 @@ import java.util.Arrays;
 
 public class Author implements IAuthor, IBasicEntity<Author> {
     private final String name;
+    private ID<String> id;
 
     public Author(String name) throws InvalidNullException {
         this.name = formatName(validate(name));
-        ID id = new ID(name);
+        this.id = new ID<String>(name);
     }
 
     @Override
@@ -22,6 +23,16 @@ public class Author implements IAuthor, IBasicEntity<Author> {
     @Override
     public boolean compareTo(Author compareData) {
         return this.name.equals(compareData.name);
+    }
+
+    @Override
+    public boolean compareKeys(String name) {
+        return false;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 
     private String formatName(String name){
