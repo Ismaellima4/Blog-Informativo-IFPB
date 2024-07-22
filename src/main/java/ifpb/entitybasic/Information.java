@@ -44,12 +44,4 @@ public class Information implements IInformation {
     public void changeDescription(String description) throws Exception {
         this.description = validateDescription(description.trim());
     }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 }
