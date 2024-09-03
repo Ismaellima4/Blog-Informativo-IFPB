@@ -1,7 +1,5 @@
 package ifpb.classes;
 
-import ifpb.Email;
-
 public class ClassUser implements ifpb.User {
     private ClassName name;
     private ClassEmail email;
