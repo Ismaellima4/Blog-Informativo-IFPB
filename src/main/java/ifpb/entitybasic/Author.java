@@ -3,26 +3,17 @@ package ifpb.entitybasic;
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IAuthor;
 import ifpb.entitybasic.interfaces.IID;
+import ifpb.entitybasic.interfaces.IName;
 
 import java.util.Arrays;
 
 public class Author implements IAuthor {
-    private final String name;
+    private final IName name;
     private IID<String> id;
 
-    public Author(String name, String matricula) throws InvalidNullException {
-        this.name = formatName(validate(name));
+    public Author(String name, String matricula) {
+        this.name = new Name(name);
         this.id = new ID<String>(matricula);
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return this.name.trim().isEmpty();
-    }
-
-    @Override
-    public boolean compareTo(IAuthor compareData) {
-        return false;
     }
 
     @Override
@@ -32,20 +23,15 @@ public class Author implements IAuthor {
 
     @Override
     public String getName() {
-        return this.name;
+        return this.name.getName();
     }
     @Override
     public IID<String> getId(){
         return this.id;
     }
 
-    private String formatName(String name){
-        return Arrays.stream(name.split(" ")).map((word -> word.substring(0,1).toUpperCase().concat(word.substring(1).toLowerCase()))).toString();
-    }
-    private String validate(String name) throws InvalidNullException {
-        if(name == null){
-            throw new InvalidNullException();
-        }
-        return name;
+    @Override
+    public boolean compareTo(IAuthor compareData) {
+        return this.compareKeys(compareData.getId());
     }
 }

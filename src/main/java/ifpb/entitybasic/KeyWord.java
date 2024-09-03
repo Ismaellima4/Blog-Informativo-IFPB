@@ -15,10 +15,6 @@ public class KeyWord implements IKeyWord {
     public boolean compareTo(KeyWord compareData) {
         return this.id.compareTo(compareData.id);
     }
-    @Override
-    public boolean isEmpty() {
-        return word.trim().isEmpty();
-    }
     public String formatWord(String word) {
         return word.toUpperCase().trim();
     }
