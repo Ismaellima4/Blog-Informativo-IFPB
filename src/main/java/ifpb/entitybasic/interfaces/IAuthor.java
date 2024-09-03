@@ -2,9 +2,9 @@ package ifpb.entitybasic.interfaces;
 
 import ifpb.entitybasic.Author;
 
-public interface IAuthor extends IBasicEntity<Author> {
+public interface IAuthor extends IBasicEntity<IAuthor> {
     boolean isEmpty();
-    boolean compareTo(Author compareData);
-    boolean compareKeys(String name);
+    boolean compareKeys(IID id);
     String getName();
+    IID<String> getId();
 }

@@ -13,7 +13,12 @@ public class ID<T> implements IID {
         this.id = Arrays.stream(args).map(String::valueOf).collect(Collectors.joining("+","(",")"));
     }
 
-    public boolean compareTo(ID compareId) {
-        return this.id.equals(compareId.id);
+    @Override
+    public String getId() {
+        return this.id;
+    }
+
+    public boolean compareTo(IID compareId) {
+        return this.id.equals(compareId.getId());
     }
 }

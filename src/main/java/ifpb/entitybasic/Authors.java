@@ -2,6 +2,7 @@ package ifpb.entitybasic;
 
 import ifpb.entitybasic.interfaces.IAuthor;
 import ifpb.entitybasic.interfaces.IAuthors;
+import ifpb.entitybasic.interfaces.IID;
 
 import java.util.ArrayList;
 
@@ -15,14 +16,15 @@ public class Authors implements IAuthors {
     }
 
     @Override
-    public void remove(String name) {
-        this.authors.remove(get(name));
+    public void remove(String matricula) {
+        IID id = new ID(matricula);
+        this.authors.remove(get(id));
     }
 
     @Override
-    public IAuthor get(String name) {
+    public IAuthor get(IID id) {
         for (IAuthor author : this.authors){
-            if(author.compareKeys(name)) return author;
+            if(author.compareKeys(id)) return author;
         }
         return null;
     }
