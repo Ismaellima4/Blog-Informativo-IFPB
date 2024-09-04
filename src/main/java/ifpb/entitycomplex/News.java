@@ -12,7 +12,7 @@ public class News implements INews {
 
     public News(IID ID, IHeader header, String news) throws Throwable {
         this.ID = ID;
-        this.header = header;
+        this.header = validateHeader(header);
         this.news = validateNews(news);
     }
 
@@ -36,5 +36,11 @@ public class News implements INews {
             throw new InvalidNullException();
         }
         return news;
+    }
+
+    private IHeader validateHeader(IHeader header) throws InvalidNullException{
+        if (header == null) throw new InvalidNullException();
+
+        return header;
     }
 }

@@ -25,17 +25,18 @@ public class Header implements IHeader {
         return this.authors;
     }
 
-
     private IInformation validateInformation(IInformation information) throws InvalidNullException {
-        if (information == null){
+        if (information == null || information.getDescription() == null || information.getTitle() == null){
             throw new InvalidNullException();
         }
+
         return information;
     }
-    private IAuthors validateSizeAuthors(IAuthors authors) throws InvalidSizeAuthors {
-        if (authors.get().length < 1){
-            throw new InvalidSizeAuthors();
-        }
+
+    private IAuthors validateSizeAuthors(IAuthors authors) throws Throwable {
+        if (authors == null) throw new InvalidNullException();
+        if (authors.get().length < 1) throw new InvalidSizeAuthors();
+
         return authors;
     }
 }
