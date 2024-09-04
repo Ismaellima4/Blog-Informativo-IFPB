@@ -1,10 +1,12 @@
 package ifpb;
 
+import ifpb.entitycomplex.interfaces.INews;
+
 import java.util.ArrayList;
 
 public interface Controller {
-    News getNewsById(int id);
+    INews getNewsById(int id);
     Article getArticleById(int id);
-    ArrayList<News> getNews();
+    ArrayList<INews> getNews();
     ArrayList<Article> getArticles();
 }
