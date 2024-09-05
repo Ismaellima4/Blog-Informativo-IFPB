@@ -1,5 +1,9 @@
 package ifpb.entitybasic.exceptions;
 
+/*
+ * Exceção lançada quando a validação de senha falha.
+*/
+
 public class InvalidPasswordException extends Exception{
     public InvalidPasswordException(){
         super("Password validation failed. " +
