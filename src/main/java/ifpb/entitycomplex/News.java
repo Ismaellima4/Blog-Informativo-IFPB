@@ -2,7 +2,7 @@ package ifpb.entitycomplex;
 
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IID;
-import ifpb.entitycomplex.interfaces.IHeader;
+import ifpb.collections.interfaces.IHeader;
 import ifpb.entitycomplex.interfaces.INews;
 
 public class News implements INews {
@@ -12,8 +12,8 @@ public class News implements INews {
 
     public News(IID ID, IHeader header, String news) throws Throwable {
         this.ID = ID;
-        this.header = validateHeader(header);
-        this.news = validateNews(news);
+        this.header = hasNullHeader(header);
+        this.news = hasNullNews(news);
     }
 
     @Override
@@ -23,7 +23,7 @@ public class News implements INews {
 
     @Override
     public void changeNews(String news) throws InvalidNullException {
-        this.news = validateNews(news);
+        this.news = hasNullNews(news);
     }
 
     @Override
@@ -31,16 +31,15 @@ public class News implements INews {
         return this.header;
     }
 
-    private String validateNews(String news) throws InvalidNullException {
-        if (news == null){
-            throw new InvalidNullException();
-        }
-        return news;
-    }
-
-    private IHeader validateHeader(IHeader header) throws InvalidNullException{
+    private IHeader hasNullHeader(IHeader header) throws InvalidNullException {
         if (header == null) throw new InvalidNullException();
 
         return header;
+    }
+
+    private String hasNullNews(String news) throws InvalidNullException {
+        if (news == null) throw new InvalidNullException();
+
+        return news;
     }
 }

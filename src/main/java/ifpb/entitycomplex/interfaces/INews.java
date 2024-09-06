@@ -1,5 +1,6 @@
 package ifpb.entitycomplex.interfaces;
 
+import ifpb.collections.interfaces.IHeader;
 import ifpb.entitybasic.exceptions.InvalidNullException;
 
 public interface INews {

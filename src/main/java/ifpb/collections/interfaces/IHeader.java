@@ -1,6 +1,5 @@
-package ifpb.entitycomplex.interfaces;
+package ifpb.collections.interfaces;
 
-import ifpb.collections.interfaces.IAuthors;
 import ifpb.entitybasic.interfaces.IInformation;
 
 public interface IHeader {
