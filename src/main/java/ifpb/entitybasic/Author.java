@@ -1,11 +1,8 @@
 package ifpb.entitybasic;
 
-import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IAuthor;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitybasic.interfaces.IName;
-
-import java.util.Arrays;
 
 public class Author implements IAuthor {
     private final IName name;

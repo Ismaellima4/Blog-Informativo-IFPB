@@ -2,10 +2,11 @@ package ifpb;
 
 import ifpb.collections.interfaces.IAuthors;
 import ifpb.collections.interfaces.IHeader;
+import ifpb.controller.interfaces.IController;
 
 import java.io.InputStream;
 
-public interface ControllerManager extends Controller {
+public interface ControllerManager extends IController {
     void addNews(IHeader header, IAuthors authors, String news, InputStream anexo);
     void updateNews(int id, IHeader header, IAuthors authors, String news, InputStream anexo);
     void removeNews(int id);
