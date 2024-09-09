@@ -9,47 +9,13 @@ import ifpb.factorys.interfaces.IAuthorsFactory;
 import ifpb.factorys.interfaces.IFactoryAuthor;
 
 public class AuthorsFactory implements IAuthorsFactory {
-    private IAuthors authors;
-    private static AuthorsFactory instance;
-    @Override
-    public void add(String matricula, String name) {
-        IFactoryAuthor factoryAuthor = new FactoryAuthor();
-        this.authors.add(factoryAuthor.create(matricula, name));
-
-    }
+    private static IAuthors authors;
 
     @Override
-    public int remove(String matricula) {
-        IID<String> id = new ID<>(matricula);
-        return this.authors.remove(id);
-    }
-
-    @Override
-    public IAuthor get(String matricula) {
-        IID<String> id = new ID<>(matricula);
-        return this.authors.get(id);
-    }
-
-    @Override
-    public IAuthor[] get() {
-        return this.authors.get();
-    }
-
-    @Override
-    public int update(String id, String name) {
-        IFactoryAuthor factoryAuthor = new FactoryAuthor();
-        return this.authors.update(factoryAuthor.create(id, name));
-    }
-
-    @Override
-    public void create() {
-        this.authors = new Authors();
-    }
-
-    public static AuthorsFactory getInstance() {
-        if (instance == null) {
-            instance = new AuthorsFactory();
+    public IAuthors create() {
+        if (authors == null){
+            return new Authors();
         }
-        return instance;
+        return authors;
     }
 }
