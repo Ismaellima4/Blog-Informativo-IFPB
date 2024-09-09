@@ -4,6 +4,7 @@ import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitybasic.interfaces.IKeyWord;
 
+// Esta classe tem sentido estar aclopada ao ID, pois ela serve como um ENUM dinâmico;
 public class KeyWord implements IKeyWord {
     private ID<String> id;
     private String word;

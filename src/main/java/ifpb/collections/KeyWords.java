@@ -12,21 +12,23 @@ public class KeyWords implements IKeyWords {
     private ArrayList<IKeyWord> keyWords = new ArrayList<>();
 
     @Override
-    public void add(String keyWord) throws InvalidNullException {
-        this.keyWords.add(new KeyWord(keyWord));
+    public void add(IKeyWord keyWord) {
+        this.keyWords.add(keyWord);
     }
 
+
     @Override
-    public int remove(String keyWord) throws InvalidNullException {
+    public int remove(IKeyWord keyWord) {
         IKeyWord value = get(keyWord);
         if(value != null){
             this.keyWords.remove(value);
+            return 1;
         }
         return 0;
     }
 
     @Override
-    public int update(String oldKeyWord, String newKeyWord) throws InvalidNullException {
+    public int update(IKeyWord oldKeyWord, IKeyWord newKeyWord) {
         int result = remove(oldKeyWord);
         if (result == 1){
             add(newKeyWord);
@@ -36,17 +38,26 @@ public class KeyWords implements IKeyWords {
     }
 
     @Override
-    public IKeyWord get(String keyWord) throws InvalidNullException {
-        try {
-            IKeyWord key = new KeyWord(keyWord);
-            for (IKeyWord value : this.keyWords){
-                if(value.compareTo(key)) return value;
-            }
-        } catch(Exception e){
-            return null;
+    public IKeyWord get(IKeyWord keyWord) {
+        for (IKeyWord value : this.keyWords){
+            if(value.compareTo(keyWord)) return value;
         }
         return null;
     }
+
+    @Override
+    public IKeyWord[] get(IKeyWord[] keyWords) {
+        IKeyWord[] resultArray = new IKeyWord[keyWords.length];
+        for (int i = 0; i < keyWords.length; i++){
+            resultArray[i] = this.get(keyWords[i]);
+            if (resultArray[i] == null){
+                this.add(keyWords[i]);
+                resultArray[i] = keyWords[i];
+            }
+        }
+        return resultArray;
+    }
+
 
     @Override
     public IKeyWord[] get() {

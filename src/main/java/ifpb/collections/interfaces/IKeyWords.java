@@ -5,10 +5,11 @@ import ifpb.entitybasic.interfaces.IKeyWord;
 
 public interface IKeyWords {
 
-    void add(String keyWord) throws InvalidNullException;
-    int remove(String keyWord) throws InvalidNullException;
-    int update(String oldKeyWord, String newKeyWord) throws InvalidNullException;
-    IKeyWord get(String keyWord) throws InvalidNullException;
+    void add(IKeyWord keyWord) throws InvalidNullException;
+    int remove(IKeyWord keyWord) throws InvalidNullException;
+    int update(IKeyWord oldKeyWord, IKeyWord newKeyWord) throws InvalidNullException;
+    IKeyWord get(IKeyWord keyWord) throws InvalidNullException;
+    IKeyWord[] get(IKeyWord[] keyWords) throws InvalidNullException;
     IKeyWord[] get();
 
 }
