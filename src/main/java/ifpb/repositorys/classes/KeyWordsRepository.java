@@ -5,9 +5,9 @@ import ifpb.entitybasic.KeyWord;
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IKeyWord;
 import ifpb.factorys.classes.KeyWordsFactory;
-import ifpb.repositorys.interfaces.IRepositoryKeyWords;
+import ifpb.repositorys.interfaces.IKeyWordsRepository;
 
-public class RepositoryKeyWords implements IRepositoryKeyWords {
+public class KeyWordsRepository implements IKeyWordsRepository {
 
     private IKeyWords keyWords = new KeyWordsFactory().create();
 

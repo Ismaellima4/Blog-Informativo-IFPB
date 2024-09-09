@@ -1,12 +1,12 @@
 package ifpb.factorys.interfaces;
 
-import ifpb.repositorys.interfaces.IRepositoryAuthors;
-import ifpb.repositorys.interfaces.IRepositoryKeyWords;
+import ifpb.repositorys.interfaces.IAuthorsRepository;
+import ifpb.repositorys.interfaces.IKeyWordsRepository;
 
 public interface IAbstractFactory {
     IAuthorsFactory createAuthorsFactory();
     IKeyWorsFactory createKeyWordsFactory();
-    IRepositoryKeyWords createRespositoryKeyWords();
-    IRepositoryAuthors createRepositoryAuthors();
+    IKeyWordsRepository createRespositoryKeyWords();
+    IAuthorsRepository createRepositoryAuthors();
 
 }

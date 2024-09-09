@@ -3,7 +3,7 @@ package ifpb.repositorys.interfaces;
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IKeyWord;
 
-public interface IRepositoryKeyWords {
+public interface IKeyWordsRepository {
     void add(String keyWord) throws InvalidNullException;
     void add(String[] keyWordsArray) throws InvalidNullException;
     int remove(String keyWord) throws InvalidNullException;

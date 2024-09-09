@@ -7,9 +7,9 @@ import ifpb.entitybasic.interfaces.IID;
 import ifpb.factorys.classes.AuthorsFactory;
 import ifpb.factorys.classes.FactoryAuthor;
 import ifpb.factorys.interfaces.IFactoryAuthor;
-import ifpb.repositorys.interfaces.IRepositoryAuthors;
+import ifpb.repositorys.interfaces.IAuthorsRepository;
 
-public class RepositoryAuthors implements IRepositoryAuthors {
+public class AuthorsRepository implements IAuthorsRepository {
     private IAuthors authors = new AuthorsFactory().create();
 
     @Override

@@ -3,10 +3,10 @@ package ifpb.factorys.classes;
 import ifpb.factorys.interfaces.IAbstractFactory;
 import ifpb.factorys.interfaces.IAuthorsFactory;
 import ifpb.factorys.interfaces.IKeyWorsFactory;
-import ifpb.repositorys.classes.RepositoryAuthors;
-import ifpb.repositorys.classes.RepositoryKeyWords;
-import ifpb.repositorys.interfaces.IRepositoryAuthors;
-import ifpb.repositorys.interfaces.IRepositoryKeyWords;
+import ifpb.repositorys.classes.AuthorsRepository;
+import ifpb.repositorys.classes.KeyWordsRepository;
+import ifpb.repositorys.interfaces.IAuthorsRepository;
+import ifpb.repositorys.interfaces.IKeyWordsRepository;
 
 public class FactoryMemory implements IAbstractFactory {
     @Override
@@ -20,12 +20,12 @@ public class FactoryMemory implements IAbstractFactory {
     }
 
     @Override
-    public IRepositoryKeyWords createRespositoryKeyWords() {
-        return new RepositoryKeyWords();
+    public IKeyWordsRepository createRespositoryKeyWords() {
+        return new KeyWordsRepository();
     }
 
     @Override
-    public IRepositoryAuthors createRepositoryAuthors() {
-        return new RepositoryAuthors();
+    public IAuthorsRepository createRepositoryAuthors() {
+        return new AuthorsRepository();
     }
 }
