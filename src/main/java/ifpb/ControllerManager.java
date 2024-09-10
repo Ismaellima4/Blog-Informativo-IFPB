@@ -2,7 +2,7 @@ package ifpb;
 
 import ifpb.collections.interfaces.IAuthors;
 import ifpb.collections.interfaces.IHeader;
-import ifpb.controller.interfaces.IController;
+import ifpb.controllers.interfaces.IController;
 
 import java.io.InputStream;
 
