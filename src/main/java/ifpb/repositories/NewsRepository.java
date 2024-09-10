@@ -2,41 +2,45 @@ package ifpb.repositories;
 
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitycomplex.interfaces.INews;
-import ifpb.repositories.interfaces.INewsRepository;
+import ifpb.repositories.interfaces.IRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class NewsRepository implements INewsRepository {
+public class NewsRepository implements IRepository<INews> {
     private ArrayList<INews> listNews;
 
     @Override
-    public void addNews(INews news) throws Throwable {
-        this.listNews.add(news);
+    public void add(INews content) {
+        this.listNews.add(content);
     }
 
     @Override
-    public INews getNewsById(IID<Integer> id) {
-        for (INews news : listNews) {
-            if (id.compareTo(news.getId())) return news;
+    public void update(IID id, INews content) {
+        remove(id);
+        add(content);
+    }
+
+    @Override
+    public void remove(IID id) {
+        this.listNews.remove(getById(id));
+    }
+
+    @Override
+    public List<INews> getAll() {
+        return this.listNews;
+    }
+
+    @Override
+    public INews getById(IID id) {
+        for (INews news: this.listNews){
+            if (news.getId().compareTo(id)) return news;
         }
         return null;
     }
 
     @Override
-    public void updateNews(IID<Integer> id, INews news) throws Throwable {
-        INews oldNews = getNewsById(id);
-        removeNews(oldNews.getId());
-        addNews(news);
-    }
-
-    @Override
-    public void removeNews(IID<Integer> id) {
-        INews oldNews = getNewsById(id);
-        listNews.remove(oldNews);
-    }
-
-    @Override
-    public ArrayList<INews> getNews() {
-        return this.listNews;
+    public INews get(INews content) {
+        return getById(content.getId());
     }
 }
