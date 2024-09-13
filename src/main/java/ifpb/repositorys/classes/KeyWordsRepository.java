@@ -19,8 +19,8 @@ public class KeyWordsRepository implements IKeyWordsRepository {
 
     @Override
     public void add(String[] keyWordsArray) throws InvalidNullException {
-        for (int i = 0; i < keyWordsArray.length; i++){
-            this.add(keyWordsArray[i]);
+        for (String s : keyWordsArray) {
+            this.add(s);
         }
     }
 

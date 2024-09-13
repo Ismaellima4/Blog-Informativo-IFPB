@@ -1,19 +1,19 @@
 package ifpb.entitycomplex;
 
 import ifpb.collections.interfaces.IHeader;
-import ifpb.entitybasic.exceptions.InvalidNullException;
+import ifpb.collections.interfaces.IKeyWords;
 import ifpb.entitybasic.interfaces.IID;
-import ifpb.entitybasic.interfaces.IKeyWord;
+import ifpb.entitycomplex.interfaces.IArticle;
 
 import java.io.InputStream;
 
-public class Article {
+public class Article implements IArticle {
     private IID<String> id;
     private IHeader header;
-    private IKeyWord[] keyWords;
+    private IKeyWords keyWords;
     private InputStream article;
 
-    public Article(IID<String> publicaitonId, IHeader header, IKeyWord[] keyWords, InputStream article) {
+    public Article(IID<String> publicaitonId, IHeader header, IKeyWords keyWords, InputStream article) {
         this.id = publicaitonId;
         this.header = header;
         this.keyWords = keyWords;
