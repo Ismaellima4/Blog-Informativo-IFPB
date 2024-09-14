@@ -8,7 +8,6 @@ public interface IRepository<T> {
     void add(T content);
     void update(IID id, T content);
     void remove(IID id);
-    List<T> getAll();
+    T[] getAll();
     T getById(IID id);
-    T get(T content);
 }

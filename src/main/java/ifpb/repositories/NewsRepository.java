@@ -1,14 +1,16 @@
 package ifpb.repositories;
 
+import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitycomplex.interfaces.INews;
 import ifpb.repositories.interfaces.IRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class NewsRepository implements IRepository<INews> {
-    private ArrayList<INews> listNews;
+    private ICollection<INews> listNews;
+
+    public NewsRepository(ICollection<INews> collection){
+        this.listNews = collection;
+    }
 
     @Override
     public void add(INews content) {
@@ -17,30 +19,21 @@ public class NewsRepository implements IRepository<INews> {
 
     @Override
     public void update(IID id, INews content) {
-        remove(id);
-        add(content);
+        this.listNews.update(id, content);
     }
 
     @Override
     public void remove(IID id) {
-        this.listNews.remove(getById(id));
+        this.listNews.remove(id);
     }
 
     @Override
-    public List<INews> getAll() {
-        return this.listNews;
+    public INews[] getAll() {
+        return this.listNews.getAll();
     }
 
     @Override
     public INews getById(IID id) {
-        for (INews news: this.listNews){
-            if (news.getId().compareTo(id)) return news;
-        }
-        return null;
-    }
-
-    @Override
-    public INews get(INews content) {
-        return getById(content.getId());
+        return this.listNews.getById(id);
     }
 }

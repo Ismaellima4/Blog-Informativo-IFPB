@@ -1,46 +1,39 @@
 package ifpb.repositories;
 
 import ifpb.Article;
+import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.repositories.interfaces.IRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ArticleRepository implements IRepository<Article> {
-    private ArrayList<Article> listArticle;
+    private ICollection<Article> articles;
+
+    public ArticleRepository(ICollection<Article> articles) {
+        this.articles = articles;
+    }
 
     @Override
     public void add(Article content) {
-        this.listArticle.add(content);
+        this.articles.add(content);
     }
 
     @Override
     public void update(IID id, Article content) {
-        remove(id);
-        add(content);
+        this.articles.update(id, content);
     }
 
     @Override
     public void remove(IID id) {
-        this.listArticle.remove(getById(id));
+        this.articles.remove(id);
     }
 
     @Override
-    public List<Article> getAll() {
-        return this.listArticle;
+    public Article[] getAll() {
+        return this.articles.getAll();
     }
 
     @Override
     public Article getById(IID id) {
-        for (Article article: this.listArticle) {
-            if (article.getId().compareTo(id)) return article;
-        }
-        return null;
-    }
-
-    @Override
-    public Article get(Article content) {
-        return getById(content.getId());
+        return this.articles.getById(id);
     }
 }

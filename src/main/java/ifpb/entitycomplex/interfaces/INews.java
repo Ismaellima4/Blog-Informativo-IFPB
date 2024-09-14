@@ -9,4 +9,5 @@ public interface INews {
     void changeNews(String news) throws InvalidNullException;
     IHeader getHeader();
     IID getId();
+    boolean comparekeys(IID id);
 }

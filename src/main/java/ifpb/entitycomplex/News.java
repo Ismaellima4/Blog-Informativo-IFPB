@@ -36,6 +36,11 @@ public class News implements INews {
         return this.ID;
     }
 
+    @Override
+    public boolean comparekeys(IID id) {
+        return this.ID.compareTo(id);
+    }
+
     private IHeader hasNullHeader(IHeader header) throws InvalidNullException {
         if (header == null) throw new InvalidNullException();
 
