@@ -1,44 +1,40 @@
 package ifpb.repositorys.classes;
 
 import ifpb.collections.interfaces.IAuthors;
-import ifpb.entitybasic.ID;
 import ifpb.entitybasic.interfaces.IAuthor;
 import ifpb.entitybasic.interfaces.IID;
-import ifpb.factorys.classes.AuthorsFactory;
-import ifpb.factorys.classes.FactoryAuthor;
-import ifpb.factorys.interfaces.IFactoryAuthor;
-import ifpb.repositorys.interfaces.IAuthorsRepository;
+import ifpb.repositorys.interfaces.IRepository;
 
-public class AuthorsRepository implements IAuthorsRepository {
-    private IAuthors authors = new AuthorsFactory().create();
+public class AuthorsRepository implements IRepository<IAuthor> {
+    private IAuthors authors;
+
+    public AuthorsRepository(IAuthors instance){
+        this.authors = instance;
+    }
 
     @Override
-    public void add(String matricula, String name) {
-        IFactoryAuthor factoryAuthor = new FactoryAuthor();
-        this.authors.add(factoryAuthor.create(matricula, name));
+    public void add(IAuthor content) {
+        this.authors.add(content);
 
     }
 
     @Override
-    public int remove(String matricula) {
-        IID<String> id = new ID<>(matricula);
+    public int remove(IID id) {
         return this.authors.remove(id);
     }
 
     @Override
-    public IAuthor get(String matricula) {
-        IID<String> id = new ID<>(matricula);
+    public IAuthor getById(IID id) {
         return this.authors.get(id);
     }
 
     @Override
-    public IAuthor[] get() {
+    public IAuthor[] getAll() {
         return this.authors.get();
     }
 
     @Override
-    public int update(String id, String name) {
-        IFactoryAuthor factoryAuthor = new FactoryAuthor();
-        return this.authors.update(factoryAuthor.create(id, name));
+    public int update(IID id,IAuthor content) {
+        return this.authors.update(content);
     }
 }

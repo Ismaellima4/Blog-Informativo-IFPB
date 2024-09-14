@@ -15,7 +15,7 @@ public class KeyWord implements IKeyWord {
     }
     @Override
     public boolean compareTo(IKeyWord compareData) {
-        return this.id.compareTo(compareData.getId());
+        return this.id.isEquals(compareData.getId());
     }
 
     @Override

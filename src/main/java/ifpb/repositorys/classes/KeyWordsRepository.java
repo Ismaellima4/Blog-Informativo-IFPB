@@ -3,57 +3,57 @@ package ifpb.repositorys.classes;
 import ifpb.collections.interfaces.IKeyWords;
 import ifpb.entitybasic.KeyWord;
 import ifpb.entitybasic.exceptions.InvalidNullException;
+import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitybasic.interfaces.IKeyWord;
 import ifpb.factorys.classes.KeyWordsFactory;
 import ifpb.repositorys.interfaces.IKeyWordsRepository;
 
 public class KeyWordsRepository implements IKeyWordsRepository {
 
-    private IKeyWords keyWords = new KeyWordsFactory().create();
+    private IKeyWords keyWords;
 
-    @Override
-    public void add(String keyWord) throws InvalidNullException {
-        IKeyWord keyWordObject = new KeyWord(keyWord);
-        this.keyWords.add(keyWordObject);
+    public KeyWordsRepository(IKeyWords instance){
+        this.keyWords = instance;
     }
 
     @Override
-    public void add(String[] keyWordsArray) throws InvalidNullException {
-        for (String s : keyWordsArray) {
+    public void add(IKeyWord content) throws InvalidNullException {
+        this.keyWords.add(content);
+    }
+
+    @Override
+    public void add(IKeyWord[] contents) throws InvalidNullException {
+        for (IKeyWord s : contents) {
             this.add(s);
         }
     }
 
     @Override
-    public int remove(String keyWord) throws InvalidNullException {
-        IKeyWord keyWordObject = new KeyWord(keyWord);
-        return this.keyWords.remove(keyWordObject);
+    public int remove(IKeyWord content) throws InvalidNullException {
+        return this.keyWords.remove(content);
     }
 
     @Override
-    public int update(String oldKeyWord, String newKeyWord) throws InvalidNullException {
-        IKeyWord oldKeyWordObject = new KeyWord(oldKeyWord);
-        IKeyWord newKeyWordObject = new KeyWord(newKeyWord);
-        return this.keyWords.update(oldKeyWordObject, newKeyWordObject);
+    public int update(IKeyWord oldKeyWord, IKeyWord newKeyWord) throws InvalidNullException {
+        return this.keyWords.update(oldKeyWord, newKeyWord);
     }
 
     @Override
-    public IKeyWord get(String keyWord) throws InvalidNullException {
-        IKeyWord keyWordObject = new KeyWord(keyWord);
-        return this.keyWords.get(keyWordObject);
+    public IKeyWord getByKeyWord(IKeyWord keyWord) throws InvalidNullException {
+        return this.keyWords.get(keyWord);
     }
 
     @Override
-    public IKeyWord[] get(String[] keyWords) throws InvalidNullException {
+    public IKeyWord[] getByKeyWords(IKeyWord[] keyWords) throws InvalidNullException {
         IKeyWord[] resultArray = new IKeyWord[keyWords.length];
         for (int i = 0; i < keyWords.length; i++){
-            resultArray[i] = new KeyWord(keyWords[i]);
+            resultArray[i] = keyWords[i];
         }
         return this.keyWords.get(resultArray);
     }
 
     @Override
-    public IKeyWord[] get() {
+    public IKeyWord[] getAll() {
         return this.keyWords.get();
     }
 }

@@ -1,4 +1,4 @@
-package ifpb.collections;
+package ifpb.collections.classes;
 
 import ifpb.collections.interfaces.IKeyWords;
 import ifpb.entitybasic.KeyWord;
@@ -66,5 +66,10 @@ public class KeyWords implements IKeyWords {
             array[i] = this.keyWords.get(i);
         }
         return array;
+    }
+
+    @Override
+    public int getSize() {
+        return this.keyWords.size();
     }
 }

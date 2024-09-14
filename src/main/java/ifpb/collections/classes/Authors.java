@@ -1,4 +1,4 @@
-package ifpb.collections;
+package ifpb.collections.classes;
 
 import ifpb.collections.interfaces.IAuthors;
 import ifpb.entitybasic.interfaces.IAuthor;
@@ -46,5 +46,10 @@ public class Authors implements IAuthors {
         }
         this.add(author);
         return 1;
+    }
+
+    @Override
+    public int getSize() {
+        return this.authors.size();
     }
 }

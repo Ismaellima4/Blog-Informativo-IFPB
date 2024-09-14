@@ -1,7 +1,7 @@
 package ifpb;
 
 import ifpb.collections.interfaces.IAuthors;
-import ifpb.collections.interfaces.IHeader;
+import ifpb.entitybasic.interfaces.IHeader;
 import ifpb.entitycomplex.interfaces.INews;
 
 import java.io.InputStream;

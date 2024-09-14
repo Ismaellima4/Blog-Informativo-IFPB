@@ -2,7 +2,7 @@ package ifpb.entitycomplex;
 
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IID;
-import ifpb.collections.interfaces.IHeader;
+import ifpb.entitybasic.interfaces.IHeader;
 import ifpb.entitycomplex.interfaces.INews;
 
 public class News implements INews {

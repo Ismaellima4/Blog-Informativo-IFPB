@@ -11,5 +11,6 @@ public interface IKeyWords {
     IKeyWord get(IKeyWord keyWord) throws InvalidNullException;
     IKeyWord[] get(IKeyWord[] keyWords) throws InvalidNullException;
     IKeyWord[] get();
+    int getSize();
 
 }

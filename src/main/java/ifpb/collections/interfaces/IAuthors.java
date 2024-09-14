@@ -9,8 +9,8 @@ public interface IAuthors {
         int remove(IID matricula);
         IAuthor get(IID matricula);
         IAuthor[] get();
-
         int update(IAuthor author);
+        int getSize();
 
 }
 

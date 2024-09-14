@@ -4,7 +4,7 @@ import ifpb.collections.interfaces.IAuthors;
 <<<<<<< HEAD
 import ifpb.collections.interfaces.IKeyWords;
 =======
-import ifpb.collections.interfaces.IHeader;
+import ifpb.entitybasic.interfaces.IHeader;
 >>>>>>> f2ac7668201f4047ab6cb6536aaec5993916a21c
 
 import java.io.InputStream;

@@ -1,7 +1,8 @@
 package ifpb.factorys.classes;
 
-import ifpb.collections.interfaces.IAuthors;
-import ifpb.collections.interfaces.IHeader;
+import ifpb.collections.interfaces.ICollectionId;
+import ifpb.entitybasic.KeyWord;
+import ifpb.entitybasic.interfaces.IHeader;
 import ifpb.collections.interfaces.IKeyWords;
 import ifpb.entitybasic.ID;
 import ifpb.entitybasic.interfaces.IID;
@@ -18,7 +19,10 @@ public class ArticleFactory implements IArticleFactory {
         IID<String> idObject = new ID<String>(id);
         IHeaderFactory headerFactory = new HeaderFactory();
         IHeader header = headerFactory.create(title,description,authors);
-        IKeyWords keyWordsCollection = new KeyWordsFactory().create();
-        return  new Article(idObject, header, keyWordsCollection, article);
+        ICollectionId collectionId = new CollectionIdFactory().create();
+        for (String keyWord : keyWords){
+            collectionId.add(new ID(keyWord));
+        }
+        return  new Article(idObject, header, collectionId, article);
     }
 }
