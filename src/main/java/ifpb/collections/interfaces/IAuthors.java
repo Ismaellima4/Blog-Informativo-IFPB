@@ -5,9 +5,10 @@ import ifpb.entitybasic.interfaces.IID;
 
 public interface IAuthors {
         void add(IAuthor author);
-        void remove(String matricula);
+        int remove(IID matricula);
         IAuthor get(IID matricula);
         IAuthor[] get();
-        void update(IAuthor author);
+        int update(IAuthor author);
+        int getSize();
 }
 
