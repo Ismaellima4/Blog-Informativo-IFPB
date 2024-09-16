@@ -6,6 +6,6 @@ public interface ICollectionId {
     void add(IID id);
     int remove(IID id);
     IID[] getAll();
-    IID get(IID id);
+    IID getById(IID id);
     int getSize();
 }

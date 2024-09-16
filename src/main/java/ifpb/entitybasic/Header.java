@@ -27,6 +27,13 @@ public class Header implements IHeader {
         return this.authors;
     }
 
+    @Override
+    public IHeader update(IHeader header) {
+        this.information = header.getInformation();
+        this.authors = getAuthors();
+        return header;
+    }
+
     private IInformation hasNullInformation(IInformation information) throws InvalidNullException {
         if (information == null || information.getDescription() == null || information.getTitle() == null){
             throw new InvalidNullException();

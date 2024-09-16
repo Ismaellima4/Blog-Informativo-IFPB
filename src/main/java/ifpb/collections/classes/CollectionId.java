@@ -28,7 +28,7 @@ public class CollectionId implements ICollectionId {
     }
 
     @Override
-    public IID get(IID id) {
+    public IID getById(IID id) {
         for (int i = 0; i< listId.size(); i++){
             if(listId.get(i).compareTo(id)){
                 return listId.get(i);
