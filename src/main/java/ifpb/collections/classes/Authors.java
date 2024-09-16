@@ -1,7 +1,6 @@
-package ifpb.collections;
+package ifpb.collections.classes;
 
 import ifpb.collections.interfaces.IAuthors;
-import ifpb.entitybasic.ID;
 import ifpb.entitybasic.interfaces.IAuthor;
 import ifpb.entitybasic.interfaces.IID;
 
@@ -17,9 +16,13 @@ public class Authors implements IAuthors {
     }
 
     @Override
-    public void remove(String matricula) {
-        IID id = new ID(matricula);
-        this.authors.remove(get(id));
+    public int remove(IID matricula) {
+        IAuthor author = get(matricula);
+        if (author != null) {
+            this.authors.remove(author);
+            return 1;
+        }
+        return 0;
     }
 
     @Override
@@ -36,9 +39,17 @@ public class Authors implements IAuthors {
     }
 
     @Override
-    public void update(IAuthor author) {
-        this.remove(author.getName());
+    public int update(IAuthor author) {
+        int value = this.remove(author.getId());
+        if (value == 0){
+            return 0;
+        }
         this.add(author);
+        return 1;
+    }
 
+    @Override
+    public int getSize() {
+        return this.authors.size();
     }
 }

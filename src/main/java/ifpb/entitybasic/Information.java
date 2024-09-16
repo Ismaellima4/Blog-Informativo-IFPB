@@ -8,9 +8,9 @@ public class Information implements IInformation {
     private ITitle title;
     private IDescription description;
 
-    public Information(String title, String description) throws Exception {
-        this.title = new Title(title);
-        this.description = new Description(description);
+    public Information(ITitle title, IDescription description) {
+        this.title = title;
+        this.description = description;
     }
 
     @Override
