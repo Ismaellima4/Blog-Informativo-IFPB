@@ -1,8 +1,8 @@
 package ifpb.factorys.classes;
 
-import ifpb.entitybasic.Author;
-import ifpb.entitybasic.ID;
-import ifpb.entitybasic.Name;
+import ifpb.entitybasic.classes.Author;
+import ifpb.entitybasic.classes.ID;
+import ifpb.entitybasic.classes.Name;
 import ifpb.entitybasic.interfaces.IAuthor;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitybasic.interfaces.IName;

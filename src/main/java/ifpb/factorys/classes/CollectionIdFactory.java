@@ -1,12 +1,13 @@
 package ifpb.factorys.classes;
 
 import ifpb.collections.classes.CollectionId;
-import ifpb.collections.interfaces.ICollectionId;
-import ifpb.factorys.interfaces.ICollectionIdFactory;
+import ifpb.collections.interfaces.ICollection;
+import ifpb.entitybasic.interfaces.IID;
+import ifpb.factorys.interfaces.ICollectionFactory;
 
-public class CollectionIdFactory implements ICollectionIdFactory {
+public class CollectionIdFactory implements ICollectionFactory<IID> {
     @Override
-    public ICollectionId create() {
+    public ICollection<IID> create() {
         return new CollectionId();
     }
 }

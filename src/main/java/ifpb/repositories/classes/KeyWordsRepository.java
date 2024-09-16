@@ -1,12 +1,9 @@
-package ifpb.repositorys.classes;
+package ifpb.repositories.classes;
 
 import ifpb.collections.interfaces.IKeyWords;
-import ifpb.entitybasic.KeyWord;
 import ifpb.entitybasic.exceptions.InvalidNullException;
-import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitybasic.interfaces.IKeyWord;
-import ifpb.factorys.classes.KeyWordsFactory;
-import ifpb.repositorys.interfaces.IKeyWordsRepository;
+import ifpb.repositories.interfaces.IKeyWordsRepository;
 
 public class KeyWordsRepository implements IKeyWordsRepository {
 

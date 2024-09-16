@@ -1,8 +1,6 @@
 package ifpb.collections.classes;
 
 import ifpb.collections.interfaces.IKeyWords;
-import ifpb.entitybasic.KeyWord;
-import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IKeyWord;
 
 import java.util.ArrayList;

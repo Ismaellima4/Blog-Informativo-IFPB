@@ -1,10 +1,9 @@
 package ifpb.entitybasic.interfaces;
 
-import ifpb.collections.interfaces.ICollectionId;
-import ifpb.entitybasic.interfaces.IInformation;
+import ifpb.collections.interfaces.ICollection;
 
 public interface IHeader {
     IInformation getInformation();
-    ICollectionId getAuthors();
+    ICollection<IID> getAuthors();
     IHeader update(IHeader header);
 }

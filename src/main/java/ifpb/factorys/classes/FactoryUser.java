@@ -1,9 +1,9 @@
 package ifpb.factorys.classes;
 
-import ifpb.entitybasic.Email;
-import ifpb.entitybasic.ID;
-import ifpb.entitybasic.Name;
-import ifpb.entitybasic.User;
+import ifpb.entitybasic.classes.Email;
+import ifpb.entitybasic.classes.ID;
+import ifpb.entitybasic.classes.Name;
+import ifpb.entitybasic.classes.User;
 import ifpb.entitybasic.interfaces.IEmail;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitybasic.interfaces.IName;

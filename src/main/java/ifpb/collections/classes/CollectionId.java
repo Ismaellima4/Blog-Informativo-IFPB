@@ -1,11 +1,11 @@
 package ifpb.collections.classes;
 
-import ifpb.collections.interfaces.ICollectionId;
+import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.interfaces.IID;
 
 import java.util.ArrayList;
 
-public class CollectionId implements ICollectionId {
+public class CollectionId implements ICollection<IID> {
     ArrayList<IID> listId = new ArrayList<>();
     @Override
     public void add(IID id) {
@@ -25,6 +25,19 @@ public class CollectionId implements ICollectionId {
             ids[i] = listId.get(i);
         }
         return ids;
+    }
+
+    @Override
+    public int update(IID ID, IID content) {
+
+        if(ID != null){
+            int result = this.remove(ID);
+            if (result == 0){
+                add(content);
+            }
+            return result;
+        }
+        return 0;
     }
 
     @Override

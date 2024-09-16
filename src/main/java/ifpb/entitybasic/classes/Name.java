@@ -1,4 +1,4 @@
-package ifpb.entitybasic;
+package ifpb.entitybasic.classes;
 
 import ifpb.entitybasic.exceptions.InvalidNameException;
 import ifpb.entitybasic.interfaces.IName;

@@ -1,8 +1,8 @@
 package ifpb.factorys.classes;
 
-import ifpb.entitybasic.Description;
-import ifpb.entitybasic.Information;
-import ifpb.entitybasic.Title;
+import ifpb.entitybasic.classes.Description;
+import ifpb.entitybasic.classes.Information;
+import ifpb.entitybasic.classes.Title;
 import ifpb.entitybasic.interfaces.IDescription;
 import ifpb.entitybasic.interfaces.IInformation;
 import ifpb.entitybasic.interfaces.ITitle;

@@ -1,4 +1,4 @@
-package ifpb.entitybasic;
+package ifpb.entitybasic.classes;
 
 import ifpb.entitybasic.interfaces.IAuthor;
 import ifpb.entitybasic.interfaces.IID;

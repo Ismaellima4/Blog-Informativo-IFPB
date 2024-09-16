@@ -1,17 +1,17 @@
-package ifpb.entitybasic;
+package ifpb.entitybasic.classes;
 
-import ifpb.collections.interfaces.IAuthors;
-import ifpb.collections.interfaces.ICollectionId;
+import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.exceptions.InvalidNullException;
+import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitybasic.interfaces.IInformation;
 import ifpb.entitycomplex.exceptions.InvalidSizeAuthors;
 import ifpb.entitybasic.interfaces.IHeader;
 
 public class Header implements IHeader {
     private IInformation information;
-    private ICollectionId authors;
+    private ICollection<IID> authors;
 
-    public Header(IInformation information, ICollectionId authors) throws Throwable {
+    public Header(IInformation information, ICollection<IID> authors) throws Throwable {
         this.information = hasNullInformation(information);
         this.authors = hasNullAuthors(authors);
         hasSizeValidForAuthor(authors);
@@ -23,7 +23,7 @@ public class Header implements IHeader {
     }
 
     @Override
-    public ICollectionId getAuthors() {
+    public ICollection<IID> getAuthors() {
         return this.authors;
     }
 
@@ -42,11 +42,11 @@ public class Header implements IHeader {
         return information;
     }
 
-    private void hasSizeValidForAuthor(ICollectionId authors) throws InvalidSizeAuthors {
+    private void hasSizeValidForAuthor(ICollection<IID> authors) throws InvalidSizeAuthors {
         if (authors.getSize() < 1) throw new InvalidSizeAuthors();
     }
 
-    private ICollectionId hasNullAuthors(ICollectionId authors) throws Throwable {
+    private ICollection<IID> hasNullAuthors(ICollection<IID> authors) throws Throwable {
         if (authors == null) throw new InvalidNullException();
 
         return authors;

@@ -1,4 +1,4 @@
-package ifpb.repositorys.interfaces;
+package ifpb.repositories.interfaces;
 
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IKeyWord;

@@ -1,6 +1,6 @@
-package ifpb.entitycomplex;
+package ifpb.entitycomplex.classes;
 
-import ifpb.collections.interfaces.ICollectionId;
+import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.interfaces.IHeader;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitycomplex.interfaces.IArticle;
@@ -11,10 +11,10 @@ import java.io.InputStream;
 public class Article implements IArticle {
     private IID<String> id;
     private IHeader header;
-    private ICollectionId keyWords;
+    private ICollection<IID> keyWords;
     private InputStream article;
 
-    public Article(IID<String> publicaitonId, IHeader header, ICollectionId keyWords, InputStream article) {
+    public Article(IID<String> publicaitonId, IHeader header, ICollection<IID> keyWords, InputStream article) {
         this.id = publicaitonId;
         this.header = header;
         this.keyWords = keyWords;
@@ -43,7 +43,7 @@ public class Article implements IArticle {
     }
 
     @Override
-    public int updateKeyWords(ICollectionId keyWords) {
+    public int updateKeyWords(ICollection<IID> keyWords) {
         this.keyWords = keyWords;
         return 0;
     }
@@ -54,7 +54,7 @@ public class Article implements IArticle {
     }
 
     @Override
-    public ICollectionId getKeyWords() {
+    public ICollection<IID> getKeyWords() {
         return this.keyWords;
     }
 

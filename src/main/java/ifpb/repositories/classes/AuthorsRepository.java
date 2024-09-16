@@ -1,9 +1,9 @@
-package ifpb.repositorys.classes;
+package ifpb.repositories.classes;
 
 import ifpb.collections.interfaces.IAuthors;
 import ifpb.entitybasic.interfaces.IAuthor;
 import ifpb.entitybasic.interfaces.IID;
-import ifpb.repositorys.interfaces.IRepository;
+import ifpb.repositories.interfaces.IRepository;
 
 public class AuthorsRepository implements IRepository<IAuthor> {
     private IAuthors authors;

@@ -1,9 +1,9 @@
 package ifpb.factorys.classes;
 
-import ifpb.entitybasic.ID;
+import ifpb.entitybasic.classes.ID;
 import ifpb.entitybasic.interfaces.IHeader;
 import ifpb.entitybasic.interfaces.IID;
-import ifpb.entitycomplex.News;
+import ifpb.entitycomplex.classes.News;
 import ifpb.entitycomplex.interfaces.INews;
 import ifpb.factorys.interfaces.INewsFactory;
 

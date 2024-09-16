@@ -1,4 +1,4 @@
-package ifpb.entitybasic;
+package ifpb.entitybasic.classes;
 
 import ifpb.entitybasic.exceptions.InvalidTitleInformationException;
 import ifpb.entitybasic.exceptions.InvalidWhiteSpaceException;
