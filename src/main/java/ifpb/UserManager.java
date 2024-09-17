@@ -1,8 +1,8 @@
 package ifpb;
 
 public interface UserManager {
-    String singIn(String email,String pasword);
-    String signUp(String name,String email,String password,String username);
+    String signIn(String email, String password); // Corrigido
+    String signUp(String name, String email, String password, String username); // Corrigido
     void removeUser(int id);
-    boolean update(int id, String name, String email, String password,String username);
+    boolean update(int id, String name, String email, String password, String username);
 }

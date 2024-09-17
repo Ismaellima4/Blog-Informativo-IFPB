@@ -11,4 +11,3 @@ public interface IAuthors {
         int update(IAuthor author);
         int getSize();
 }
-
