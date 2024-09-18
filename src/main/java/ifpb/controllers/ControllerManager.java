@@ -13,7 +13,6 @@ import ifpb.repositories.interfaces.IRepository;
 
 public class ControllerManager implements IControllerManager {
 
-    //private final IRepository<IUser> userRepository;
     private final IRepository<INews> newsRepository;
     private final IRepository<IArticle> articleRepository;
     private final IKeyWordsRepository keyWordsRepository;
@@ -29,17 +28,17 @@ public class ControllerManager implements IControllerManager {
 
     @Override
     public void createUser(IUser user) {
-        //this.userRepository.add(user);
+
     }
 
     @Override
     public void updateUser(IID id, IUser user) {
-        //this.userRepository.update(id, user);
+
     }
 
     @Override
     public void deleteUser(IID id) {
-        //this.userRepository.remove(id);
+
     }
 
     @Override
