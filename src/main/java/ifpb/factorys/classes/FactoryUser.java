@@ -16,6 +16,6 @@ public class FactoryUser implements IFactoryUser {
         IID<String> id = new ID<String>(username);
         IName nameObject = new Name(name);
         IEmail emailObject = new Email(email);
-        return new User(id, nameObject, emailObject);
+        return new User(id, nameObject, emailObject, password);
     }
 }

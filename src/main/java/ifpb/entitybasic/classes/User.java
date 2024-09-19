@@ -10,11 +10,13 @@ public class User implements IUser {
     private IName name;
     private IEmail email;
     private IID<String> username;
+    private String password;
 
-    public User(IID<String> username, IName name, IEmail email) {
+    public User(IID<String> username, IName name, IEmail email, String password) {
         this.name = name;
         this.email = email;
         this.username = username;
+        this.password = password;
     }
 
     @Override
@@ -29,5 +31,15 @@ public class User implements IUser {
     @Override
     public String getUsername() {
         return username.getId();
+    }
+
+    @Override
+    public void changePassword(String newPassword) {
+        this.password = newPassword;
+    }
+
+    @Override
+    public boolean verifyPassword(String password) {
+        return this.password.equals(password);
     }
 }
