@@ -1,4 +1,4 @@
-package ifpb;
+package ifpb.repositories.classes;
 
 import ifpb.entitybasic.classes.ID;
 import ifpb.entitybasic.interfaces.IUser;
@@ -6,22 +6,23 @@ import ifpb.entitybasic.interfaces.IID;
 import ifpb.collections.classes.UserCollection;
 import ifpb.collections.interfaces.IUsers;
 import ifpb.entitybasic.exceptions.InvalidNullException;
+import ifpb.repositories.interfaces.IUserRepository;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserRepositoryImplementation implements IUserRepository {
+public class UserRepository implements IUserRepository {
 
     private final IUsers userCollection;
     private final Map<IID<String>, String> passwords = new HashMap<>();
     private int currentId = 1;
 
-    public UserRepositoryImplementation() {
+    public UserRepository() {
         this.userCollection = new UserCollection();
     }
 
     @Override
-    public IUser signIn(String username, String password) {
+    public IUser signIn(String username, String password) throws InvalidNullException {
         IID<String> id = new ID<>(username);
         IUser user = userCollection.get(id);
         if (user != null && passwords.get(id).equals(password)) {

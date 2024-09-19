@@ -10,6 +10,7 @@ import ifpb.entitycomplex.interfaces.IArticle;
 import ifpb.entitycomplex.interfaces.INews;
 import ifpb.repositories.interfaces.IKeyWordsRepository;
 import ifpb.repositories.interfaces.IRepository;
+import ifpb.repositories.interfaces.IUserRepository;
 
 public class ControllerManager implements IControllerManager {
 
@@ -17,12 +18,14 @@ public class ControllerManager implements IControllerManager {
     private final IRepository<IArticle> articleRepository;
     private final IKeyWordsRepository keyWordsRepository;
     private final IRepository<IAuthor> authorRepository;
+    private final IUserRepository userRepository;
 
-    public ControllerManager(IRepository<INews> newsRepository, IRepository<IArticle>  articleRepository, IKeyWordsRepository keyWordsRepository, IRepository<IAuthor> authorIRepository) {
+    public ControllerManager(IRepository<INews> newsRepository, IRepository<IArticle>  articleRepository, IKeyWordsRepository keyWordsRepository, IRepository<IAuthor> authorIRepository, IUserRepository userRepository) {
         this.newsRepository = newsRepository;
         this.articleRepository = articleRepository;
         this.keyWordsRepository = keyWordsRepository;
         this.authorRepository = authorIRepository;
+        this.userRepository = userRepository;
     }
 
 
