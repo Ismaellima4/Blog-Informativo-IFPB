@@ -12,7 +12,7 @@ import ifpb.factorys.interfaces.IFactoryUser;
 
 public class FactoryUser implements IFactoryUser {
     @Override
-    public IUser create(String username, String name, String email) {
+    public IUser create(String username, String name, String email, String password) {
         IID<String> id = new ID<String>(username);
         IName nameObject = new Name(name);
         IEmail emailObject = new Email(email);

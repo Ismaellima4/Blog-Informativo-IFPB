@@ -29,7 +29,7 @@ public class User implements IUser {
         this.email.changeEmail(email);
     }
     @Override
-    public String getUsername() {
+    public IID getUsername() {
         return username.getId();
     }
 
