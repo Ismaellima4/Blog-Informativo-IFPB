@@ -50,7 +50,7 @@ public class UserCollection implements ICollection<IUser> {
             throw new RuntimeException(e);
         }
         for (IUser user : users) {
-            if (user.getUsername().equals(id.getId())) {
+            if (user.compareId(id)) {
                 return user;
             }
         }
@@ -58,7 +58,8 @@ public class UserCollection implements ICollection<IUser> {
     }
 
     @Override
-    public IUser[] getAll() {
+    public IUser[] getAll() throws InvalidNullException {
+        if (users.isEmpty()) throw new InvalidNullException();
         IUser[] usersArray = new IUser[users.size() - 1];
         for(int i = 0; i<users.size(); i++){
             usersArray[i] = users.get(i);

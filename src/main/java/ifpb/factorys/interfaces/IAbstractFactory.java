@@ -1,5 +1,7 @@
 package ifpb.factorys.interfaces;
 
+import ifpb.controllers.interfaces.IController;
+import ifpb.controllers.interfaces.IControllerManager;
 import ifpb.entitybasic.interfaces.IAuthor;
 import ifpb.entitybasic.interfaces.IUser;
 import ifpb.entitycomplex.interfaces.IArticle;

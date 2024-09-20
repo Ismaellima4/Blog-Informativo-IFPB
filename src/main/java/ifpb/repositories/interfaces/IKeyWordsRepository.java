@@ -10,5 +10,5 @@ public interface IKeyWordsRepository {
     int update(IKeyWord oldKeyWord, IKeyWord newKeyWord) throws InvalidNullException;
     IKeyWord getByKeyWord(IKeyWord keyWord) throws InvalidNullException;
     IKeyWord[] getByKeyWords(IKeyWord[] keyWords) throws InvalidNullException;
-    IKeyWord[] getAll();
+    IKeyWord[] getAll() throws InvalidNullException;
 }

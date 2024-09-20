@@ -7,4 +7,5 @@ public interface IUser {
     IID getUsername();
     void changePassword(String password);
     boolean verifyPassword(String password);
+    boolean compareId(IID id);
 }

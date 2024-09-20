@@ -2,6 +2,7 @@ package ifpb.controllers;
 
 import ifpb.controllers.interfaces.IControllerManager;
 import ifpb.entitybasic.exceptions.InvalidNullException;
+import ifpb.entitybasic.exceptions.InvalidPasswordException;
 import ifpb.entitybasic.interfaces.IAuthor;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitybasic.interfaces.IKeyWord;
@@ -30,28 +31,23 @@ public class ControllerManager implements IControllerManager {
 
 
     @Override
-    public void createUser(IUser user) {
-
+    public void signUp(IUser user) throws InvalidNullException {
+        this.userRepository.signUp(user);
     }
 
     @Override
-    public void updateUser(IID id, IUser user) {
-
+    public void updateUser(IID id, IUser user) throws InvalidNullException {
+        this.userRepository.updateUser(id, user);
     }
 
     @Override
-    public void deleteUser(IID id) {
-
+    public void deleteUser(IID id) throws InvalidNullException {
+        this.userRepository.removeUser(id);
     }
 
     @Override
-    public IUser getUserById(IID id) {
-        return null;
-    }
-
-    @Override
-    public IUser[] getAllUser() {
-        return new IUser[0];
+    public int signIn(String id,String password) throws InvalidNullException, InvalidPasswordException {
+        return this.userRepository.signIn(id,password);
     }
 
     @Override
@@ -60,12 +56,12 @@ public class ControllerManager implements IControllerManager {
     }
 
     @Override
-    public void deleteNews(IID id) {
+    public void deleteNews(IID id) throws InvalidNullException {
         this.newsRepository.remove(id);
     }
 
     @Override
-    public void updateNews(IID id, INews news) {
+    public void updateNews(IID id, INews news) throws InvalidNullException {
         this.newsRepository.update(id, news);
     }
 
@@ -75,12 +71,12 @@ public class ControllerManager implements IControllerManager {
     }
 
     @Override
-    public void deleteArticle(IID id) {
+    public void deleteArticle(IID id) throws InvalidNullException {
         this.articleRepository.remove(id);
     }
 
     @Override
-    public void updateArticle(IID id, IArticle article) {
+    public void updateArticle(IID id, IArticle article) throws InvalidNullException {
         this.articleRepository.update(id, article);
     }
 
@@ -90,22 +86,22 @@ public class ControllerManager implements IControllerManager {
     }
 
     @Override
-    public void removeAuthor(IID id) {
+    public void removeAuthor(IID id) throws InvalidNullException {
         this.authorRepository.remove(id);
     }
 
     @Override
-    public void updateAuthor(IID id, IAuthor author) {
+    public void updateAuthor(IID id, IAuthor author) throws InvalidNullException {
         this.authorRepository.update(id, author);
     }
 
     @Override
-    public IAuthor[] getAuthors() {
+    public IAuthor[] getAuthors() throws InvalidNullException {
         return this.authorRepository.getAll();
     }
 
     @Override
-    public IAuthor getAuthorById(IID id) {
+    public IAuthor getAuthorById(IID id) throws InvalidNullException {
         return this.authorRepository.getById(id);
     }
 
@@ -135,22 +131,22 @@ public class ControllerManager implements IControllerManager {
     }
 
     @Override
-    public INews getNewsById(IID<Integer> id) {
+    public INews getNewsById(IID<Integer> id) throws InvalidNullException {
         return this.newsRepository.getById(id);
     }
 
     @Override
-    public IArticle getArticleById(IID<Integer> id) {
+    public IArticle getArticleById(IID<Integer> id) throws InvalidNullException {
         return this.articleRepository.getById(id);
     }
 
     @Override
-    public INews[] getNews() {
+    public INews[] getNews() throws InvalidNullException {
         return this.newsRepository.getAll();
     }
 
     @Override
-    public IArticle[] getArticles() {
+    public IArticle[] getArticles() throws InvalidNullException {
         return this.articleRepository.getAll();
     }
 }

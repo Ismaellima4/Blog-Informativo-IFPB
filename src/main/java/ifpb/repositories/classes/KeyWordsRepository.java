@@ -50,7 +50,7 @@ public class KeyWordsRepository implements IKeyWordsRepository {
     }
 
     @Override
-    public IKeyWord[] getAll() {
+    public IKeyWord[] getAll() throws InvalidNullException {
         return this.keyWords.get();
     }
 }

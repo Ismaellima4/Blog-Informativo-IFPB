@@ -1,6 +1,7 @@
 package ifpb.collections.classes;
 
 import ifpb.collections.interfaces.ICollection;
+import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitycomplex.interfaces.IArticle;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 
 public class ArticleCollection implements ICollection<IArticle> {
 
-    private ArrayList<IArticle> articles;
+    private ArrayList<IArticle> articles = new ArrayList<>();
 
     @Override
     public void add(IArticle content) {
@@ -16,7 +17,7 @@ public class ArticleCollection implements ICollection<IArticle> {
     }
 
     @Override
-    public int remove(IID id) {
+    public int remove(IID id) throws InvalidNullException {
         IArticle article = getById(id);
         if (id != null || article != null) {
             this.articles.remove(getById(id));
@@ -26,20 +27,21 @@ public class ArticleCollection implements ICollection<IArticle> {
     }
 
     @Override
-    public IArticle getById(IID id) {
+    public IArticle getById(IID id) throws InvalidNullException {
         for (IArticle article: this.articles){
             if (article.compareKeys(id)) return article;
         }
-        return null;
+        throw new InvalidNullException();
     }
 
     @Override
-    public IArticle[] getAll() {
+    public IArticle[] getAll() throws InvalidNullException {
+        if (articles.isEmpty()) throw new InvalidNullException();
         return this.articles.toArray(new IArticle[this.articles.size()]);
     }
 
     @Override
-    public int update(IID id, IArticle content) {
+    public int update(IID id, IArticle content) throws InvalidNullException {
         int result = remove(id);
         if (result == 0){
             add(content);

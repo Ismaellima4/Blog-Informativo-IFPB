@@ -15,7 +15,7 @@ public class Author implements IAuthor {
 
     @Override
     public boolean compareKeys(IID id) {
-        return this.id.isEquals(id);
+        return this.id.compareTo(id);
     }
 
     @Override

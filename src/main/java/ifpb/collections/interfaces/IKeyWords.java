@@ -10,7 +10,7 @@ public interface IKeyWords {
     int update(IKeyWord oldKeyWord, IKeyWord newKeyWord) throws InvalidNullException;
     IKeyWord get(IKeyWord keyWord) throws InvalidNullException;
     IKeyWord[] get(IKeyWord[] keyWords) throws InvalidNullException;
-    IKeyWord[] get();
+    IKeyWord[] get() throws InvalidNullException;
     int getSize();
 
 }

@@ -1,6 +1,7 @@
 package ifpb.collections.classes;
 
 import ifpb.collections.interfaces.IAuthors;
+import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IAuthor;
 import ifpb.entitybasic.interfaces.IID;
 
@@ -16,7 +17,7 @@ public class Authors implements IAuthors {
     }
 
     @Override
-    public int remove(IID matricula) {
+    public int remove(IID matricula) throws InvalidNullException {
         IAuthor author = get(matricula);
         if (author != null) {
             this.authors.remove(author);
@@ -26,20 +27,25 @@ public class Authors implements IAuthors {
     }
 
     @Override
-    public IAuthor get(IID id) {
+    public IAuthor get(IID id) throws InvalidNullException {
         for (IAuthor author : this.authors){
             if(author.compareKeys(id)) return author;
         }
-        return null;
+        throw new InvalidNullException();
     }
 
     @Override
-    public IAuthor[] get() {
-        return (IAuthor[]) this.authors.toArray();
+    public IAuthor[] get() throws InvalidNullException {
+        if (authors.isEmpty()) throw new InvalidNullException();
+        IAuthor[] authorArray = new IAuthor[this.authors.size()];
+        for (int i = 0; i < authorArray.length; i++) {
+            authorArray[i] = this.authors.get(i);
+        }
+        return authorArray;
     }
 
     @Override
-    public int update(IAuthor author) {
+    public int update(IAuthor author) throws InvalidNullException {
         int value = this.remove(author.getId());
         if (value == 0){
             return 0;

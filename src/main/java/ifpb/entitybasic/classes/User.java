@@ -30,7 +30,7 @@ public class User implements IUser {
     }
     @Override
     public IID getUsername() {
-        return username.getId();
+        return username;
     }
 
     @Override
@@ -41,5 +41,10 @@ public class User implements IUser {
     @Override
     public boolean verifyPassword(String password) {
         return this.password.equals(password);
+    }
+
+    @Override
+    public boolean compareId(IID id) {
+        return username.compareTo(id);
     }
 }

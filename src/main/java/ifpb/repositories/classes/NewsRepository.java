@@ -1,6 +1,7 @@
 package ifpb.repositories.classes;
 
 import ifpb.collections.interfaces.ICollection;
+import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitycomplex.interfaces.INews;
 import ifpb.repositories.interfaces.IRepository;
@@ -18,22 +19,22 @@ public class NewsRepository implements IRepository<INews> {
     }
 
     @Override
-    public int update(IID id, INews content) {
+    public int update(IID id, INews content) throws InvalidNullException {
         return this.listNews.update(id, content);
     }
 
     @Override
-    public int remove(IID id) {
+    public int remove(IID id) throws InvalidNullException {
         return this.listNews.remove(id);
     }
 
     @Override
-    public INews[] getAll() {
+    public INews[] getAll() throws InvalidNullException {
         return this.listNews.getAll();
     }
 
     @Override
-    public INews getById(IID id) {
+    public INews getById(IID id) throws InvalidNullException {
         return this.listNews.getById(id);
     }
 }

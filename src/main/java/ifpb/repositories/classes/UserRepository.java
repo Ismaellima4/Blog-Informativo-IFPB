@@ -2,6 +2,8 @@ package ifpb.repositories.classes;
 
 import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.classes.ID;
+import ifpb.entitybasic.exceptions.InvalidNullException;
+import ifpb.entitybasic.exceptions.InvalidPasswordException;
 import ifpb.entitybasic.interfaces.IUser;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.collections.classes.UserCollection;
@@ -9,25 +11,25 @@ import ifpb.repositories.interfaces.IUserRepository;
 
 public class UserRepository implements IUserRepository {
 
-    private final UserCollection UserCollection;
+    private final ICollection<IUser> UserCollection;
 
     public UserRepository(ICollection<IUser> iUserICollection) {
-        this.UserCollection = new UserCollection();
+        this.UserCollection = iUserICollection;
     }
 
     @Override
-    public IUser signIn(String username, String password) {
+    public int signIn(String username, String password) throws InvalidNullException, InvalidPasswordException {
         IID<String> id = new ID<>(username);
         IUser user = null;
         user = UserCollection.getById(id);
         if (user != null) {
-            return user;
+            return user.hashCode();
         }
-        return null;
+        throw new InvalidPasswordException();
     }
 
     @Override
-    public boolean signUp(IUser user) {
+    public boolean signUp(IUser user) throws InvalidNullException {
         if (UserCollection.getById(user.getUsername()) != null) {
             return false;
         }
@@ -36,12 +38,12 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public boolean removeUser(IID id) {
+    public boolean removeUser(IID id) throws InvalidNullException {
         return UserCollection.remove(id) == 0;
     }
 
     @Override
-    public boolean updateUser(IID id, IUser newUser) {
+    public boolean updateUser(IID id, IUser newUser) throws InvalidNullException {
         UserCollection.update(id, newUser);
         return true;
     }
