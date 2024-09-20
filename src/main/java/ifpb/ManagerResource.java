@@ -11,12 +11,15 @@ import ifpb.entitycomplex.interfaces.IArticle;
 import ifpb.entitycomplex.interfaces.INews;
 import ifpb.factorys.classes.FactoryAuthor;
 import ifpb.factorys.classes.FactoryUser;
+import ifpb.factorys.classes.NewsFactory;
 import ifpb.factorys.interfaces.IFactoryAuthor;
 import ifpb.factorys.interfaces.IFactoryUser;
+import ifpb.factorys.interfaces.INewsFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Path("/manager")
 public class ManagerResource {
@@ -74,29 +77,32 @@ public class ManagerResource {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
     }
-//
-//    @POST
-//    @Path("/news")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response createNews(INews news) {
-//        controllerManager.createNews(news);
-//        return Response.status(Response.Status.CREATED).build();
-//    }
-//
-//    @DELETE
-//    @Path("/news/{id}")
-//    public Response deleteNews(@PathParam("id") Integer id) throws InvalidNullException {
-//        controllerManager.deleteNews(new ID<>(id));
-//        return Response.noContent().build();
-//    }
-//
-//    @PUT
-//    @Path("/news/{id}")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response updateNews(@PathParam("id") Integer id, INews news) throws InvalidNullException {
-//        controllerManager.updateNews(new ID<>(id), news);
-//        return Response.ok().build();
-//    }
+
+    @POST
+    @Path("/news")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response createNews(@FormParam("id") String id, @FormParam("title") String title, @FormParam("description") String description, @FormParam("authos") List<String> authors, @FormParam("news") String news) throws Throwable {
+        INewsFactory newsFactory = new NewsFactory();
+        controllerManager.createNews(newsFactory.create(id, title, description, ((String[]) authors.toArray()), news));
+        return Response.status(Response.Status.CREATED).build();
+    }
+
+    @DELETE
+    @Path("/news/{id}")
+    public Response deleteNews(@PathParam("id") Integer id) throws InvalidNullException {
+        controllerManager.deleteNews(new ID<>(id));
+        return Response.noContent().build();
+    }
+
+    @PUT
+    @Path("/news/{id}")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response updateNews(@PathParam("id") String id,  @FormParam("title") String title, @FormParam("description") String description, @FormParam("authos") List<String> authors, @FormParam("news") String news) throws Throwable {
+        INewsFactory newsFactory = new NewsFactory();
+
+        controllerManager.updateNews(new ID<>(id), newsFactory.create(id, title, description, ((String[]) authors.toArray()), news));
+        return Response.ok().build();
+    }
 //
 //    @POST
 //    @Path("/articles")
@@ -106,12 +112,12 @@ public class ManagerResource {
 //        return Response.status(Response.Status.CREATED).build();
 //    }
 //
-//    @DELETE
-//    @Path("/articles/{id}")
-//    public Response deleteArticle(@PathParam("id") Integer id) throws InvalidNullException {
-//        controllerManager.deleteArticle(new ID<>(id));
-//        return Response.noContent().build();
-//    }
+    @DELETE
+    @Path("/articles/{id}")
+    public Response deleteArticle(@PathParam("id") Integer id) throws InvalidNullException {
+        controllerManager.deleteArticle(new ID<>(id));
+        return Response.noContent().build();
+    }
 //
 //    @PUT
 //    @Path("/articles/{id}")
@@ -153,7 +159,7 @@ public class ManagerResource {
 
     @GET
     @Path("/authors")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     public Response getAuthors() throws InvalidNullException {
         IAuthor[] authors = controllerManager.getAuthors();
         return Response.ok(authors).build();
