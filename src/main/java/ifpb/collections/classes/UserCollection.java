@@ -1,6 +1,6 @@
 package ifpb.collections.classes;
 
-import ifpb.collections.interfaces.IUsers;
+import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitybasic.interfaces.IUser;
@@ -8,7 +8,7 @@ import ifpb.entitybasic.interfaces.IUser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserCollection implements IUsers {
+public class UserCollection implements ICollection<IUser> {
 
     private final List<IUser> users;
 
@@ -17,15 +17,24 @@ public class UserCollection implements IUsers {
     }
 
     @Override
-    public void add(IUser user) throws InvalidNullException {
-        validateUser(user);
+    public void add(IUser user) {
+        try {
+            validateUser(user);
+        } catch (InvalidNullException e) {
+            throw new RuntimeException(e);
+        }
         users.add(user);
     }
 
     @Override
-    public int remove(IID id) throws InvalidNullException {
-        validateId(id);
-        IUser user = get(id);
+    public int remove(IID id) {
+        IUser user = null;
+        try {
+            validateId(id);
+            user = getById(id);
+        } catch (InvalidNullException e) {
+            throw new RuntimeException(e);
+        }
         if (user != null) {
             users.remove(user);
             return 0;
@@ -34,8 +43,12 @@ public class UserCollection implements IUsers {
     }
 
     @Override
-    public IUser get(IID id) throws InvalidNullException {
-        validateId(id);
+    public IUser getById(IID id) {
+        try {
+            validateId(id);
+        } catch (InvalidNullException e) {
+            throw new RuntimeException(e);
+        }
         for (IUser user : users) {
             if (user.getUsername().equals(id.getId())) {
                 return user;
@@ -45,15 +58,23 @@ public class UserCollection implements IUsers {
     }
 
     @Override
-    public List<IUser> getAll() throws InvalidNullException {
-        return new ArrayList<>(users);
+    public IUser[] getAll() {
+        IUser[] usersArray = new IUser[users.size() - 1];
+        for(int i = 0; i<users.size(); i++){
+            usersArray[i] = users.get(i);
+        }
+        return usersArray;
     }
 
     @Override
-    public int update(IID id, IUser newUser) throws InvalidNullException {
-        validateId(id);
-        validateUser(newUser);
-        IUser user = get(id);
+    public int update(IID id, IUser newUser) {
+        try {
+            validateId(id);
+            validateUser(newUser);
+        } catch (InvalidNullException e) {
+            throw new RuntimeException(e);
+        }
+        IUser user = getById(id);
         if (user != null) {
             users.remove(user);
             users.add(newUser);
@@ -69,13 +90,13 @@ public class UserCollection implements IUsers {
 
     private void validateUser(IUser user) throws InvalidNullException {
         if (user == null) {
-            throw new InvalidNullException("User cannot be null");
+            throw new InvalidNullException();
         }
     }
 
     private void validateId(IID id) throws InvalidNullException {
         if (id == null || id.getId() == null) {
-            throw new InvalidNullException("ID cannot be null");
+            throw new InvalidNullException();
         }
     }
 }

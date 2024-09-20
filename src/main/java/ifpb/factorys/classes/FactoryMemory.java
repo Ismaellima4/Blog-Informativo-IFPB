@@ -1,18 +1,18 @@
 package ifpb.factorys.classes;
 
+import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.interfaces.IAuthor;
+import ifpb.entitybasic.interfaces.IUser;
 import ifpb.entitycomplex.interfaces.IArticle;
 import ifpb.entitycomplex.interfaces.INews;
 import ifpb.factorys.interfaces.IAbstractFactory;
 import ifpb.factorys.interfaces.IAuthorsFactory;
 import ifpb.factorys.interfaces.ICollectionFactory;
 import ifpb.factorys.interfaces.IKeyWorsFactory;
-import ifpb.repositories.classes.ArticleRepository;
-import ifpb.repositories.classes.AuthorsRepository;
-import ifpb.repositories.classes.KeyWordsRepository;
-import ifpb.repositories.classes.NewsRepository;
+import ifpb.repositories.classes.*;
 import ifpb.repositories.interfaces.IKeyWordsRepository;
 import ifpb.repositories.interfaces.IRepository;
+import ifpb.repositories.interfaces.IUserRepository;
 
 public class FactoryMemory implements IAbstractFactory {
     @Override
@@ -33,6 +33,11 @@ public class FactoryMemory implements IAbstractFactory {
     @Override
     public ICollectionFactory<INews> createNewsCollectionFactory() {
         return new NewsCollectionFactory();
+    }
+
+    @Override
+    public ICollectionFactory<IUser> createUsersCollectionFactory() {
+        return new CollectionUserFactory();
     }
 
     @Override
@@ -57,5 +62,11 @@ public class FactoryMemory implements IAbstractFactory {
     public IRepository<INews> createRepositoryNews() {
         ICollectionFactory<INews> factory = createNewsCollectionFactory();
         return new NewsRepository(factory.create());
+    }
+
+    @Override
+    public IUserRepository createRepositoryUser() {
+        ICollectionFactory<IUser> factory = createUsersCollectionFactory();
+        return new UserRepository(factory.create());
     }
 }
