@@ -4,7 +4,6 @@ import ifpb.entitybasic.classes.ID;
 import ifpb.entitybasic.interfaces.IUser;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.collections.classes.UserCollection;
-import ifpb.collections.interfaces.IUsers;
 import ifpb.entitybasic.exceptions.InvalidNullException;
 
 import java.util.HashMap;
@@ -12,18 +11,17 @@ import java.util.Map;
 
 public class UserRepositoryImplementation implements IUserRepository {
 
-    private final IUsers userCollection;
+    private final UserCollection UserCollection;
     private final Map<IID<String>, String> passwords = new HashMap<>();
-    private int currentId = 1;
 
     public UserRepositoryImplementation() {
-        this.userCollection = new UserCollection();
+        this.UserCollection = new UserCollection();
     }
 
     @Override
     public IUser signIn(String username, String password) {
         IID<String> id = new ID<>(username);
-        IUser user = userCollection.get(id);
+        IUser user = UserCollection.get(id);
         if (user != null && passwords.get(id).equals(password)) {
             return user;
         }
@@ -34,10 +32,10 @@ public class UserRepositoryImplementation implements IUserRepository {
     public boolean signUp(IUser user, String password) {
         IID<String> id = new ID<>(user.getUsername());
         try {
-            if (userCollection.get(id) != null) {
+            if (UserCollection.get(id) != null) {
                 return false;
             }
-            userCollection.add(user);
+            UserCollection.add(user);
             passwords.put(id, password);
             return true;
         } catch (InvalidNullException e) {
@@ -48,7 +46,7 @@ public class UserRepositoryImplementation implements IUserRepository {
     @Override
     public boolean removeUser(IID id) {
         try {
-            if (userCollection.remove(id) == 0) {
+            if (UserCollection.remove(id) == 0) {
                 passwords.remove(id);
                 return true;
             }
@@ -60,7 +58,7 @@ public class UserRepositoryImplementation implements IUserRepository {
     @Override
     public boolean updateUser(IID id, IUser newUser, String newPassword) {
         try {
-            if (userCollection.update(id, newUser) == 0) {
+            if (UserCollection.update(id, newUser) == 0) {
                 passwords.put(id, newPassword);
                 return true;
             }

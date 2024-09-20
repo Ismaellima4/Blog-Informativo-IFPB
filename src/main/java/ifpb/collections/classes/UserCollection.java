@@ -1,6 +1,5 @@
 package ifpb.collections.classes;
 
-import ifpb.collections.interfaces.IUsers;
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IID;
 import ifpb.entitybasic.interfaces.IUser;
@@ -45,7 +44,7 @@ public class UserCollection implements IUsers {
     }
 
     @Override
-    public List<IUser> getAll() throws InvalidNullException {
+    public List<IUser> getAll() {
         return new ArrayList<>(users);
     }
 
