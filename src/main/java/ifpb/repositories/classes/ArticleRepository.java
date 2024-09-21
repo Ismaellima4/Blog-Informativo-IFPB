@@ -1,5 +1,7 @@
 package ifpb.repositories.classes;
-
+/**
+ * A classe ArticleRepository implementa as operações para gerenciar artigos em um repositório.
+ */
 import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IID;

@@ -1,5 +1,7 @@
 package ifpb;
-
+/**
+ * Classe Main que inicializa o servidor Jetty e configura os recursos RESTful.
+ */
 import ifpb.factorys.classes.ControllerFactoryMemory;
 import ifpb.factorys.interfaces.IControllerFactory;
 import org.glassfish.jersey.server.ResourceConfig;

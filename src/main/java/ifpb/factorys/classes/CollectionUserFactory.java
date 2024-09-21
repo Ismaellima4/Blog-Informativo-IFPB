@@ -1,5 +1,8 @@
 package ifpb.factorys.classes;
-
+/**
+ * A classe CollectionUserFactory implementa a interface ICollectionFactory e é responsável
+ * pela criação de coleções de usuários.
+ */
 import ifpb.collections.classes.UserCollection;
 import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.interfaces.IUser;

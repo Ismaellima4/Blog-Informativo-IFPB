@@ -1,5 +1,29 @@
 package ifpb.entitybasic.classes;
-
+/**
+ * A classe Password implementa a interface IPassword e fornece funcionalidades para gerenciar e validar
+ * senhas, incluindo a validação e a criptografia da senha.
+ *
+ * Princípios Aplicados:
+ *
+ * - Single Responsibility Principle (SRP):
+ *   A classe Password é responsável por validar e criptografar senhas.
+ *
+ * - Liskov Substitution Principle (LSP):
+ *   A classe pode ser substituída por outras implementações de IPassword sem impactar o comportamento do sistema.
+ *
+ * - Open/Closed Principle (OCP):
+ *   A classe está aberta para extensão ao permitir a adição de novas funcionalidades de validação ou criptografia
+ *   sem modificar o código existente.
+ *
+ * - Interface Segregation Principle (ISP):
+ *   Implementa apenas os métodos definidos na interface IPassword, mantendo as responsabilidades bem definidas.
+ *
+ * - Object Calisthenics: Small Entities:
+ *   A classe é focada e gerencia a validação e criptografia de senhas.
+ *
+ * - Object Calisthenics: One Dot Per Line:
+ *   O código segue a regra de um ponto por linha, garantindo clareza e legibilidade.
+ */
 import ifpb.entitybasic.exceptions.InvalidChangePassword;
 import ifpb.entitybasic.exceptions.InvalidPasswordException;
 import ifpb.entitybasic.interfaces.IPassword;

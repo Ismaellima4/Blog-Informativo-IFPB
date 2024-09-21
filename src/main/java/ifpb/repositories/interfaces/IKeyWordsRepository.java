@@ -1,5 +1,7 @@
 package ifpb.repositories.interfaces;
-
+/**
+ * A interface IKeyWordsRepository define as operações básicas para gerenciar palavras-chave em um repositório.
+ */
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IKeyWord;
 

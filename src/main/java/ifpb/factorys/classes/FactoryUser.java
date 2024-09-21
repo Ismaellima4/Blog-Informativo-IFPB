@@ -1,5 +1,9 @@
 package ifpb.factorys.classes;
-
+/**
+ * A classe FactoryUser é responsável pela criação de instâncias de IUser.
+ * Ela implementa a interface IFactoryUser e encapsula a lógica de criação
+ * de um usuário, incluindo a construção de seu ID, nome e e-mail.
+ */
 import ifpb.entitybasic.classes.Email;
 import ifpb.entitybasic.classes.ID;
 import ifpb.entitybasic.classes.Name;

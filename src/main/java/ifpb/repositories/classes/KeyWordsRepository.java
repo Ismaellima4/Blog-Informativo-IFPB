@@ -1,5 +1,7 @@
 package ifpb.repositories.classes;
-
+/**
+ * A classe KeyWordsRepository implementa as operações para gerenciar palavras-chave em um repositório.
+ */
 import ifpb.collections.interfaces.IKeyWords;
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IKeyWord;

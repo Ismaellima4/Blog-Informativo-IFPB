@@ -1,5 +1,31 @@
 package ifpb.collections.classes;
-
+/**
+ * A classe UserCollection implementa a interface ICollection e gerencia uma coleção de usuários (IUser).
+ * Oferece métodos para adicionar, remover, atualizar e recuperar usuários, garantindo a validade dos dados
+ * durante as operações.
+ *
+ * Princípios Aplicados:
+ *
+ * - Single Responsibility Principle (SRP):
+ *   A classe é responsável apenas por gerenciar a coleção de usuários, mantendo as operações de manipulação de dados
+ *   separadas e organizadas.
+ *
+ * - Liskov Substitution Principle (LSP):
+ *   A classe pode ser substituída por qualquer outra implementação de ICollection<IUser> sem comprometer o funcionamento
+ *   do sistema.
+ *
+ * - Open/Closed Principle (OCP):
+ *   A classe está aberta para extensão, permitindo que novas funcionalidades sejam adicionadas sem alterar o código existente.
+ *
+ * - Interface Segregation Principle (ISP):
+ *   Implementa apenas os métodos definidos na interface ICollection, mantendo as responsabilidades claramente definidas.
+ *
+ * - Object Calisthenics: First Class Collections:
+ *   Encapsula a lista de usuários, evitando manipulações diretas da lista interna.
+ *
+ * - Object Calisthenics: No Primitives:
+ *   Utiliza a interface IUser para representar usuários, evitando o uso de tipos primitivos e melhorando o encapsulamento.
+ */
 import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IID;

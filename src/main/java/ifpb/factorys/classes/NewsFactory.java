@@ -1,5 +1,9 @@
 package ifpb.factorys.classes;
-
+/**
+ * A classe NewsFactory é responsável pela criação de instâncias de INews.
+ * Ela implementa a interface INewsFactory e fornece a lógica para a
+ * construção de um objeto de notícia, incluindo a criação do cabeçalho.
+ */
 import ifpb.entitybasic.classes.ID;
 import ifpb.entitybasic.interfaces.IHeader;
 import ifpb.entitybasic.interfaces.IID;

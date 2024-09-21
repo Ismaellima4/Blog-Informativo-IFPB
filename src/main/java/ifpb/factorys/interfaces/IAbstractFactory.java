@@ -1,5 +1,8 @@
 package ifpb.factorys.interfaces;
-
+/**
+ * A interface IAbstractFactory define um contrato para a criação de diferentes fábricas e repositórios
+ * relacionados a entidades e coleções de um sistema.
+ */
 import ifpb.controllers.interfaces.IController;
 import ifpb.controllers.interfaces.IControllerManager;
 import ifpb.entitybasic.interfaces.IAuthor;

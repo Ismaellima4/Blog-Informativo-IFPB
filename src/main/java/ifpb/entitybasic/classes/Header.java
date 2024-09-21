@@ -1,5 +1,36 @@
 package ifpb.entitybasic.classes;
-
+/**
+ * A classe Header implementa a interface IHeader e gerencia o cabeçalho de um artigo, incluindo informações
+ * básicas e uma lista de autores. Essa classe garante que as informações e a lista de autores sejam válidas
+ * ao serem instanciadas e permite atualizações controladas.
+ *
+ * Princípios Aplicados:
+ *
+ * - Single Responsibility Principle (SRP):
+ *   A classe Header é responsável apenas por gerenciar o cabeçalho de um artigo, garantindo a consistência
+ *   das informações e dos autores.
+ *
+ * - Liskov Substitution Principle (LSP):
+ *   A classe Header pode ser substituída por qualquer outra implementação de IHeader sem comprometer o funcionamento
+ *   do sistema.
+ *
+ * - Open/Closed Principle (OCP):
+ *   A classe Header está aberta para extensão através da interface IHeader, permitindo novas funcionalidades
+ *   sem modificar o código existente.
+ *
+ * - Interface Segregation Principle (ISP):
+ *   Implementa apenas os métodos definidos na interface IHeader, mantendo as responsabilidades claramente
+ *   definidas e separadas.
+ *
+ * - Object Calisthenics: Small Entities:
+ *   A classe Header é pequena e focada, gerenciando apenas o cabeçalho e a lista de autores de um artigo.
+ *
+ * - Object Calisthenics: First Class Collections:
+ *   Utiliza ICollection para encapsular a lista de autores, evitando manipulação direta de coleções.
+ *
+ * - Object Calisthenics: No Primitives:
+ *   Utiliza objetos para encapsular o comportamento ao invés de tipos primitivos.
+ */
 import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IID;

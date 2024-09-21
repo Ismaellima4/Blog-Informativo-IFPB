@@ -1,5 +1,27 @@
 package ifpb.controllers;
-
+/**
+ * A classe ControllerManager implementa a interface IControllerManager e
+ * gerencia a lógica de controle de usuários, notícias, artigos, autores e
+ * palavras-chave, servindo como um ponto central de interação com os repositórios.
+ *
+ * Princípios Aplicados:
+ *
+ * - Single Responsibility Principle (SRP):
+ *   A classe ControllerManager é responsável por gerenciar operações relacionadas
+ *   a usuários, notícias, artigos, autores e palavras-chave.
+ *
+ * - Liskov Substitution Principle (LSP):
+ *   A classe ControllerManager pode ser substituída por qualquer outra implementação
+ *   de IControllerManager sem comprometer a funcionalidade do sistema.
+ *
+ * - Open/Closed Principle (OCP):
+ *   A classe ControllerManager está aberta para extensão, permitindo que novas
+ *   funcionalidades sejam adicionadas sem modificar o código existente.
+ *
+ * - Dependency Inversion Principle (DIP):
+ *   A classe depende de abstrações (IRepository, IKeyWordsRepository, IUserRepository),
+ *   não de implementações concretas.
+ */
 import ifpb.controllers.interfaces.IControllerManager;
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.exceptions.InvalidPasswordException;

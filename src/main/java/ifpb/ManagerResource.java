@@ -1,5 +1,7 @@
 package ifpb;
-
+/**
+ * Classe ManagerResource que expõe operações RESTful para gerenciar usuários, notícias e autores.
+ */
 import ifpb.controllers.interfaces.IControllerManager;
 import ifpb.entitybasic.classes.ID;
 import ifpb.entitybasic.exceptions.InvalidNullException;
@@ -103,30 +105,14 @@ public class ManagerResource {
         controllerManager.updateNews(new ID<>(id), newsFactory.create(id, title, description, ((String[]) authors.toArray()), news));
         return Response.ok().build();
     }
-//
-//    @POST
-//    @Path("/articles")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response createArticle(IArticle article) {
-//        controllerManager.createArticle(article);
-//        return Response.status(Response.Status.CREATED).build();
-//    }
-//
+
     @DELETE
     @Path("/articles/{id}")
     public Response deleteArticle(@PathParam("id") Integer id) throws InvalidNullException {
         controllerManager.deleteArticle(new ID<>(id));
         return Response.noContent().build();
     }
-//
-//    @PUT
-//    @Path("/articles/{id}")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response updateArticle(@PathParam("id") Integer id, IArticle article) throws InvalidNullException {
-//        controllerManager.updateArticle(new ID<>(id), article);
-//        return Response.ok().build();
-//    }
-//
+
     @POST
     @Path("/author")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -177,48 +163,5 @@ public class ManagerResource {
         }
     }
 
-//    @POST
-//    @Path("/keywords")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response addKeyWord(IKeyWord keyWord) throws InvalidNullException {
-//        controllerManager.addKeyWord(keyWord);
-//        return Response.status(Response.Status.CREATED).build();
-//    }
-//
-//    @DELETE
-//    @Path("/keywords")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response removeKeyWord(IKeyWord keyWord) throws InvalidNullException {
-//        controllerManager.removeKeyWord(keyWord);
-//        return Response.noContent().build();
-//    }
-//
-//    @PUT
-//    @Path("/keywords")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response updateKeyWord(IKeyWord oldKeyWord, IKeyWord newKeyWord) throws InvalidNullException {
-//        controllerManager.updateKeyWord(oldKeyWord, newKeyWord);
-//        return Response.ok().build();
-//    }
-//
-//    @GET
-//    @Path("/keywords")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response getKeyWords(IKeyWord[] keyWords) throws InvalidNullException {
-//        IKeyWord[] result = controllerManager.getKeyWords(keyWords);
-//        return Response.ok(result).build();
-//    }
-//
-//    @GET
-//    @Path("/keywords/{keyword}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response getKeyWord(@PathParam("keyword") IKeyWord keyWord) throws InvalidNullException {
-//        IKeyWord result = controllerManager.getKeyWord(keyWord);
-//        if (result != null) {
-//            return Response.ok(result).build();
-//        } else {
-//            return Response.status(Response.Status.NOT_FOUND).build();
-//        }
-//    }
 }
 

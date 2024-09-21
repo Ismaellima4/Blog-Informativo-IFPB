@@ -1,5 +1,8 @@
 package ifpb.factorys.classes;
-
+/**
+ * A classe FactoryInformation implementa a interface IFactoryInformation e é responsável
+ * pela criação de instâncias de IInformation, encapsulando um título e uma descrição.
+ */
 import ifpb.entitybasic.classes.Description;
 import ifpb.entitybasic.classes.Information;
 import ifpb.entitybasic.classes.Title;

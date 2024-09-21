@@ -1,5 +1,7 @@
 package ifpb.repositories.classes;
-
+/**
+ * A classe AuthorsRepository implementa as operações para gerenciar autores em um repositório.
+ */
 import ifpb.collections.interfaces.IAuthors;
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IAuthor;

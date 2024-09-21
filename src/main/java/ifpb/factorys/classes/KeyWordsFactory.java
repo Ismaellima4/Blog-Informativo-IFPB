@@ -1,5 +1,9 @@
 package ifpb.factorys.classes;
-
+/**
+ * A classe KeyWordsFactory é responsável pela criação de instâncias de IKeyWords.
+ * Ela implementa a interface IKeyWorsFactory e utiliza o padrão Singleton para garantir
+ * que apenas uma instância da coleção de palavras-chave seja criada.
+ */
 import ifpb.collections.classes.KeyWords;
 import ifpb.collections.interfaces.IKeyWords;
 import ifpb.factorys.interfaces.IKeyWorsFactory;

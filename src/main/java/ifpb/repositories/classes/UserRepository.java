@@ -1,5 +1,7 @@
 package ifpb.repositories.classes;
-
+/**
+ * A classe UserRepository implementa as operações para gerenciar usuários em um repositório.
+ */
 import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.classes.ID;
 import ifpb.entitybasic.exceptions.InvalidNullException;

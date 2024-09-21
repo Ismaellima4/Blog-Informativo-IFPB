@@ -1,5 +1,9 @@
 package ifpb.factorys.classes;
-
+/**
+ * A classe FactoryMemory implementa a interface IAbstractFactory e é responsável
+ * pela criação de instâncias de repositórios e fábricas relacionados a entidades
+ * como autores, palavras-chave, artigos, notícias e usuários, todos em memória.
+ */
 import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.interfaces.IAuthor;
 import ifpb.entitybasic.interfaces.IUser;
