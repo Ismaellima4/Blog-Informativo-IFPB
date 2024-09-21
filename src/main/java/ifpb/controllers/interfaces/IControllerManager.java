@@ -1,5 +1,28 @@
 package ifpb.controllers.interfaces;
-
+/**
+ * A interface IControllerManager estende IController e define operações adicionais
+ * para gerenciar usuários, notícias, artigos, autores e palavras-chave.
+ * Ela oferece métodos para realizar operações CRUD (Criar, Ler, Atualizar, Excluir)
+ * e manipular autenticação de usuários.
+ *
+ * Princípios Aplicados:
+ *
+ * - Single Responsibility Principle (SRP):
+ *   A interface é responsável por gerenciar as operações de controle e manipulação
+ *   de diversos recursos do sistema.
+ *
+ * - Liskov Substitution Principle (LSP):
+ *   Qualquer classe que implemente IControllerManager pode ser usada sem afetar
+ *   a funcionalidade do sistema.
+ *
+ * - Open/Closed Principle (OCP):
+ *   A interface está aberta para extensão, permitindo que novas funcionalidades
+ *   sejam adicionadas sem modificar o código existente.
+ *
+ * - Interface Segregation Principle (ISP):
+ *   Define métodos específicos para operações relacionadas a usuários, notícias,
+ *   artigos, autores e palavras-chave, evitando a inclusão de métodos desnecessários.
+ */
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.exceptions.InvalidPasswordException;
 import ifpb.entitybasic.interfaces.IAuthor;

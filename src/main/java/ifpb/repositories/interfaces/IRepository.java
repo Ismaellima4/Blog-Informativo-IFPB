@@ -1,5 +1,7 @@
 package ifpb.repositories.interfaces;
-
+/**
+ * A interface IRepository define as operações básicas para gerenciar entidades genéricas em um repositório.
+ */
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.interfaces.IID;
 

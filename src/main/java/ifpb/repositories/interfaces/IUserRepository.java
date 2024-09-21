@@ -1,5 +1,7 @@
 package ifpb.repositories.interfaces;
-
+/**
+ * A interface IUserRepository define as operações básicas para gerenciar usuários.
+ */
 import ifpb.entitybasic.exceptions.InvalidNullException;
 import ifpb.entitybasic.exceptions.InvalidPasswordException;
 import ifpb.entitybasic.interfaces.IUser;

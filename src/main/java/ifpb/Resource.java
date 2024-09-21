@@ -1,5 +1,7 @@
 package ifpb;
-
+/**
+ * Classe Resource que expõe operações RESTful para acessar notícias e artigos.
+ */
 import ifpb.controllers.interfaces.IController;
 import ifpb.entitybasic.classes.ID;
 import ifpb.entitybasic.exceptions.InvalidNullException;

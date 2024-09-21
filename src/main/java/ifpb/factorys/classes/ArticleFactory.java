@@ -1,5 +1,8 @@
 package ifpb.factorys.classes;
-
+/**
+ * A classe ArticleFactory implementa a interface IArticleFactory e é responsável
+ * pela criação de instâncias de IArticle.
+ */
 import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.interfaces.IHeader;
 import ifpb.entitybasic.classes.ID;

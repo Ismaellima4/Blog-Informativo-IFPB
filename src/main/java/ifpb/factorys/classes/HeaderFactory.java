@@ -1,5 +1,9 @@
 package ifpb.factorys.classes;
-
+/**
+ * A classe HeaderFactory é responsável pela criação de instâncias de IHeader.
+ * Ela implementa a interface IHeaderFactory e encapsula a lógica de criação
+ * de um cabeçalho, incluindo informações e IDs de autores.
+ */
 import ifpb.collections.interfaces.ICollection;
 import ifpb.entitybasic.classes.Header;
 import ifpb.entitybasic.classes.ID;

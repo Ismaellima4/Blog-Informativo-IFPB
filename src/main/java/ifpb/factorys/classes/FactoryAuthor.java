@@ -1,5 +1,8 @@
 package ifpb.factorys.classes;
-
+/**
+ * A classe FactoryAuthor implementa a interface IFactoryAuthor e é responsável
+ * pela criação de instâncias de IAuthor, encapsulando um nome e um identificador.
+ */
 import ifpb.entitybasic.classes.Author;
 import ifpb.entitybasic.classes.ID;
 import ifpb.entitybasic.classes.Name;

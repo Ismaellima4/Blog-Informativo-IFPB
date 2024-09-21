@@ -1,5 +1,8 @@
 package ifpb.factorys.classes;
-
+/**
+ * A classe ControllerFactoryMemory implementa a interface IControllerFactory e é responsável
+ * pela criação de instâncias de controladores, utilizando um padrão de fábrica baseado em memória.
+ */
 import ifpb.controllers.Controller;
 import ifpb.controllers.ControllerManager;
 import ifpb.controllers.interfaces.IController;

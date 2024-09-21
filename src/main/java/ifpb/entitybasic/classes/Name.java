@@ -1,5 +1,29 @@
 package ifpb.entitybasic.classes;
-
+/**
+ * A classe Name implementa a interface IName e fornece funcionalidades para gerenciar e formatar
+ * um nome. Ela valida e formata o nome, garantindo que ele siga um formato adequado.
+ *
+ * Princípios Aplicados:
+ *
+ * - Single Responsibility Principle (SRP):
+ *   A classe Name é responsável apenas por validar e formatar um nome.
+ *
+ * - Liskov Substitution Principle (LSP):
+ *   A classe pode ser substituída por outras implementações de IName sem comprometer o comportamento do sistema.
+ *
+ * - Open/Closed Principle (OCP):
+ *   A classe está aberta para extensão ao permitir adicionar novas formas de validação ou formatação
+ *   sem modificar a lógica existente.
+ *
+ * - Interface Segregation Principle (ISP):
+ *   Implementa os métodos necessários da interface IName, mantendo responsabilidades bem definidas.
+ *
+ * - Object Calisthenics: Small Entities:
+ *   A classe é pequena e focada, gerenciando a lógica de validação e formatação de nomes.
+ *
+ * - Object Calisthenics: One Dot Per Line:
+ *   O código segue a regra de um ponto por linha, promovendo clareza e legibilidade.
+ */
 import ifpb.entitybasic.exceptions.InvalidNameException;
 import ifpb.entitybasic.interfaces.IName;
 
