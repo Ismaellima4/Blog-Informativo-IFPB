@@ -1,19 +1,15 @@
 package ifpb;
-/**
- * Classe ManagerResource que expõe operações RESTful para gerenciar usuários, notícias e autores.
- */
+
 import ifpb.controllers.interfaces.IControllerManager;
 import ifpb.entitybasic.classes.ID;
+import ifpb.entitybasic.classes.KeyWord;
 import ifpb.entitybasic.exceptions.InvalidNullException;
-import ifpb.entitybasic.exceptions.InvalidPasswordException;
 import ifpb.entitybasic.interfaces.IAuthor;
 import ifpb.entitybasic.interfaces.IKeyWord;
-import ifpb.entitybasic.interfaces.IUser;
 import ifpb.entitycomplex.interfaces.IArticle;
 import ifpb.entitycomplex.interfaces.INews;
-import ifpb.factorys.classes.FactoryAuthor;
-import ifpb.factorys.classes.FactoryUser;
-import ifpb.factorys.classes.NewsFactory;
+import ifpb.factorys.classes.*;
+import ifpb.factorys.interfaces.IArticleFactory;
 import ifpb.factorys.interfaces.IFactoryAuthor;
 import ifpb.factorys.interfaces.IFactoryUser;
 import ifpb.factorys.interfaces.INewsFactory;
@@ -21,9 +17,13 @@ import ifpb.factorys.interfaces.INewsFactory;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("/manager")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class ManagerResource {
 
     private final IControllerManager controllerManager;
@@ -35,7 +35,6 @@ public class ManagerResource {
     @POST
     @Path("/user/signup")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response signUp(
             @FormParam("username") String username,
             @FormParam("name") String name,
@@ -70,7 +69,6 @@ public class ManagerResource {
     @POST
     @Path("/user/signin")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(MediaType.TEXT_PLAIN)
     public Response signIn(@FormParam("id") String id, @FormParam("password") String password) throws InvalidNullException {
         try {
             int hash = controllerManager.signIn(id, password);
@@ -82,10 +80,14 @@ public class ManagerResource {
 
     @POST
     @Path("/news")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public Response createNews(@FormParam("id") String id, @FormParam("title") String title, @FormParam("description") String description, @FormParam("authos") List<String> authors, @FormParam("news") String news) throws Throwable {
+    public Response createNews(@FormParam("id")String id,
+                               @FormParam("title") String title,
+                               @FormParam("description") String description,
+                               @FormParam("authors") List<String> authors,
+                               @FormParam("news") String news) throws Throwable {
         INewsFactory newsFactory = new NewsFactory();
-        controllerManager.createNews(newsFactory.create(id, title, description, ((String[]) authors.toArray()), news));
+        INews newsEntity = newsFactory.create(id, title, description, authors.toArray(String[]::new), news);
+        controllerManager.createNews(newsEntity);
         return Response.status(Response.Status.CREATED).build();
     }
 
@@ -98,12 +100,30 @@ public class ManagerResource {
 
     @PUT
     @Path("/news/{id}")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public Response updateNews(@PathParam("id") String id,  @FormParam("title") String title, @FormParam("description") String description, @FormParam("authos") List<String> authors, @FormParam("news") String news) throws Throwable {
+    public Response updateNews(@PathParam("id") String id,
+                               @FormParam("title") String title,
+                               @FormParam("description") String description,
+                               @FormParam("authors") List<String> authors,
+                               @FormParam("news") String news) throws Throwable {
         INewsFactory newsFactory = new NewsFactory();
-
-        controllerManager.updateNews(new ID<>(id), newsFactory.create(id, title, description, ((String[]) authors.toArray()), news));
+        INews newsEntity = newsFactory.create(id, title, description, authors.toArray(String[]::new), news);
+        controllerManager.updateNews(new ID<>(id), newsEntity);
         return Response.ok().build();
+    }
+
+    @POST
+    @Path("/articles")
+    @Consumes(MediaType.APPLICATION_OCTET_STREAM)
+    public Response createArticle(@FormParam("id") String id,
+                                  @FormParam("title") String title,
+                                  @FormParam("description") String description,
+                                  @FormParam("authors") List<String> authors,
+                                  @FormParam("keyWords") List<String> keyWords,
+                                  @FormParam("article") FileInputStream file) throws Throwable {
+        IArticleFactory articleFactory = new ArticleFactory();
+        IArticle article = articleFactory.create(id, title, description, authors.toArray(String[]::new), keyWords.toArray(String[]::new), file);
+        controllerManager.createArticle(article);
+        return Response.status(Response.Status.CREATED).build();
     }
 
     @DELETE
@@ -111,6 +131,21 @@ public class ManagerResource {
     public Response deleteArticle(@PathParam("id") Integer id) throws InvalidNullException {
         controllerManager.deleteArticle(new ID<>(id));
         return Response.noContent().build();
+    }
+
+    @PUT
+    @Path("/articles/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateArticle(@PathParam("id") String id,
+                                  @FormParam("title") String title,
+                                  @FormParam("description") String description,
+                                  @FormParam("authors") List<String> authors,
+                                  @FormParam("keyWords") List<String> keyWords,
+                                  @FormParam("article") FileInputStream file) throws Throwable {
+        IArticleFactory articleFactory = new ArticleFactory();
+        IArticle article = articleFactory.create(id, title, description, authors.toArray(String[]::new), keyWords.toArray(String[]::new), file);
+        controllerManager.updateArticle(new ID<>(id), article);
+        return Response.ok().build();
     }
 
     @POST
@@ -145,7 +180,6 @@ public class ManagerResource {
 
     @GET
     @Path("/authors")
-    @Produces(MediaType.TEXT_PLAIN)
     public Response getAuthors() throws InvalidNullException {
         IAuthor[] authors = controllerManager.getAuthors();
         return Response.ok(authors).build();
@@ -153,7 +187,6 @@ public class ManagerResource {
 
     @GET
     @Path("/author/{id}")
-    @Produces(MediaType.TEXT_PLAIN)
     public Response getAuthorById(@PathParam("id") Integer id) throws InvalidNullException {
         IAuthor author = controllerManager.getAuthorById(new ID<>(id));
         if (author != null) {
@@ -163,5 +196,49 @@ public class ManagerResource {
         }
     }
 
+    @POST
+    @Path("/keywords")
+    public Response addKeyWord(@FormParam("keyword") String word) throws InvalidNullException {
+        controllerManager.addKeyWord(new KeyWord(word));
+        return Response.status(Response.Status.CREATED).build();
+    }
+
+    @DELETE
+    @Path("/keywords")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response removeKeyWord(@FormParam("keyword") String word) throws InvalidNullException {
+        controllerManager.removeKeyWord(new KeyWord(word));
+        return Response.noContent().build();
+    }
+
+    @PUT
+    @Path("/keywords")
+    public Response updateKeyWord(@FormParam("oldKeyword") String oldKeyWord,
+                                  @FormParam("newKeyword") String  newKeyWord) throws InvalidNullException {
+        controllerManager.updateKeyWord(new KeyWord(oldKeyWord), new KeyWord(newKeyWord));
+        return Response.ok().build();
+    }
+
+    @GET
+    @Path("/keywords")
+    public Response getKeyWords(@FormParam("keywords") List<String> words) throws InvalidNullException {
+        List<IKeyWord> keyWords = new ArrayList<>();
+        for (String word: words){
+            keyWords.add(new KeyWord(word));
+        }
+        IKeyWord[] result = controllerManager.getKeyWords(keyWords.toArray(IKeyWord[]::new));
+        return Response.ok(result).build();
+    }
+
+    @GET
+    @Path("/keywords/{word}")
+    public Response getKeyWord(@PathParam("word") String word) throws InvalidNullException {
+        IKeyWord result = controllerManager.getKeyWord(new KeyWord(word));
+        if (result != null) {
+            return Response.ok(result).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
 }
 
